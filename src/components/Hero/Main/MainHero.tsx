@@ -32,15 +32,14 @@ export default function MainHero() {
               </span>
             </span>
           </h1>
-
           <p className="py-8 lg:px-24 md:p-12 sm:py-10 sm:px-0 xl:text-2xl lg:text-xl md:text-xl">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Create stunning dashboards with TipThing&apos;s drag-and-drop
+            builder and plugin marketplace. Simplify your workflow and empower
+            your life.
           </p>
           <div className="grid gap-8 items-start justify-center mt-8">
             <div className="relative group">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-200 group-hover:duration-200 animate-tilt"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-200 group-hover:duration-200 animate-tilt"></div>
               <a
                 href="#"
                 className="cursor-pointer relative px-20 py-5 bg-black rounded-lg leading-none flex items-center divide-x divide-gray-600"
