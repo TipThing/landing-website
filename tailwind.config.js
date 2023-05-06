@@ -94,6 +94,7 @@ module.exports = {
   },
   daisyui: {
       darkTheme: "customBlack",
+      logs: false,
       themes: [{
           customBlack: {
               "primary": "#343232",

@@ -4,7 +4,7 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <div className="xl:container lg:container sm:container mx-auto">
+    <div className="xl:container lg:container md:container xl:mx-auto lg:mx-auto md:mx-auto">
       <Head>
         {/* <!-- Primary Meta Tags --> */}
         <title>TipThing - Imagine. Build. Use. Dashboards made easy</title>
@@ -12,7 +12,7 @@ export default function Home() {
         <meta name="description" key="description" content="Empower your life with TipThing's customizable dashboard builder. Simplify your workflow and enhance your productivity with ease." />
         <meta name="keywords" key="keywords" content="dashboard builder, customizable, productivity, workflow, todo tracker, budget planner, community-driven, SaaS, user-friendly, innovative solutions, highly flexible, accessibility, quality, value for money, personal, professional, ease, drag and drop, drag n drop"/>
         <meta name="robots" key="robots" content="index, follow"/>
-        <meta http-equiv="Content-Type" key="content-type" content="text/html; charset=utf-8"/>
+        <meta httpEquiv="Content-Type" key="content-type" content="text/html; charset=utf-8"/>
         <meta name="language" key="language" content="English"/>
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" key="og:type" content="website" />
