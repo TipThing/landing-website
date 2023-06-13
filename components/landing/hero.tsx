@@ -9,7 +9,7 @@ import { GetNotifiedInput } from "../utilities/getNotifiedInput";
 export const Hero = () => {
 
     return (
-        <div className="hero my-10 xl:my-32 xl:mt-10 lg:my-32 md:my-24 md:mt-12 sm:my-6">
+        <div className="hero my-10 xl:my-20 xl:mt-10 lg:my-32 md:my-24 md:mt-12 sm:my-6">
             <div className="hero-content px-5 sm:px-8 text-center">
                 <div className="text-left md:text-center max-w-lg md:max-w-xl lg:max-w-5xl xl:max-w-full">
                     <h1 className="text-center text-7xl xl:text-8xl lg:text-8xl md:text-8xl sm:text-8xl leading-none select-none tracking-tightest font-extrabold">

@@ -17,7 +17,7 @@ export const GetNotifiedInput: FC<NotifiedInputProps> = ({
     return (
         <div className={`grid gap-8 items-start justify-center ${className}`}>
             <div className="relative group">
-                <div className={`rounded-xl ${isExtra ? "shadow-[0_0_120px_8px_rgb(0,0,0/0.25)]" : "shadow-[0_0_20px_6px_rgb(0,0,0/0.25)]"} dark:shadow-purple-700 shadow-purple-300 dark:hover:shadow-pink-800 hover:shadow-pink-400 transition-shadow duration-300`}>
+                <div className={`rounded-xl ${isExtra ? "shadow-[0_0_120px_20px]" : "shadow-[0_0_20px_6px]"} dark:shadow-purple-700 shadow-fuchsia-400 dark:hover:shadow-pink-800 hover:shadow-pink-400 transition-shadow duration-300`}>
                     <div className="relative">
                         <div className="absolute w-full rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 hover:opacity-100 hover:blur-md"></div>
                         <div className="flex justify-between">

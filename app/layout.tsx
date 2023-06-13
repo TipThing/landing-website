@@ -11,6 +11,7 @@ import clsx from "clsx";
 import "@fortawesome/fontawesome-svg-core/styles.css"; 
 
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { ScrollToTopButton } from "@/components/utilities/scrollToTop";
 // Tell Font Awesome to skip adding the CSS automatically 
 // since it's already imported above
 config.autoAddCss = false; 
@@ -50,6 +51,7 @@ export default function RootLayout({
 					<div className="relative flex flex-col">
 						<Navbar />
 						<main className="flex-grow">
+						<ScrollToTopButton />
 							{children}
 						</main>
 						<footer className="w-full flex items-center justify-center py-3">

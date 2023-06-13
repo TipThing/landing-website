@@ -10,7 +10,7 @@ export const DashboardBuilder = () => {
 	return (
 		<div className="flex flex-col xl:flex-row lg:flex-row md:flex-col sm:flex-col">
 			<div className="grow mx-16 xl:mr-40 lg:mr-40 my-16">
-				<div className="text-sm bg-gradient-to-r from-blue-500 to-pink-200 text-transparent bg-clip-text max-w-fit">
+				<div className="text-sm bg-gradient-to-r dark:from-blue-500 dark:to-pink-200 from-blue-700 to-pink-500 text-transparent bg-clip-text max-w-fit">
 					DRAG N DROP BUILDER
 				</div>
 				<div className="relative flex flex-col gap-8">
@@ -83,13 +83,15 @@ export const DashboardBuilder = () => {
 			<div className="grow-0 xl:mr-16 lg:mr-16">
 				<Card
 					radius="2xl"
-					className="border-none"
+					className="h-[525px] w-[350px] dark:border-none border-[1px] border-gray-200 dark:bg-gradient-to-tr dark:from-[#0E0A26] dark:to-[#1F242E]"
 				>
-					<Image
-						height={750}
-						alt="NextUI Fruit Image with Zoom"
-						src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
-					/>
+					<div className="flex justify-center items-center w-full h-full">
+						<Image
+							height={750}
+							alt="Collaboration Feature"
+							src="./assets/images/dashboard_builder.png"
+						/>
+					</div>
 				</Card>
 			</div>
 		</div>

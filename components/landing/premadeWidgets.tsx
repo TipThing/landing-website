@@ -9,14 +9,14 @@ export const PremadeWidgets = () => {
     return (
         <div>
             <div className="flex flex-col items-center justify-center">
-                <div className="text-sm bg-gradient-to-r from-yellow-500 to-orange-300 text-transparent bg-clip-text max-w-fit">
+                <div className="text-sm bg-gradient-to-r dark:from-yellow-500 dark:to-orange-300 from-red-500 to-orange-500 text-transparent bg-clip-text max-w-fit">
                     NEVER START FROM SCRATCH
                 </div>
                 <h3 className="text-4xl font-bold mt-2 mb-16">Pre-made Widgets & Blocks</h3>
                 <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-16 items-stretch">
                     <div className="col-auto">
                         <Card className="h-full">
-                            <CardBody className="overflow-visible p-0">
+                            <CardBody className="overflow-visible p-0 bg-gray-800 rounded-xl">
                                 <div className="flex justify-center items-center">
                                     <div className="w-full p-8">
                                         <GraphVector height={140} />
@@ -32,7 +32,7 @@ export const PremadeWidgets = () => {
                     </div>
                     <div className="col-auto">
                         <Card className="h-full">
-                            <CardBody className="overflow-visible p-0">
+                            <CardBody className="overflow-visible p-0 bg-gray-800 rounded-xl">
                                 <div className="flex justify-center items-center">
                                     <div className="w-full p-8">
                                         <TableVector height={140} />
@@ -47,7 +47,7 @@ export const PremadeWidgets = () => {
                     </div>
                     <div className="col-auto">
                         <Card className="h-full">
-                            <CardBody className="overflow-visible p-0">
+                            <CardBody className="overflow-visible p-0 bg-gray-800 rounded-xl">
                                 <div className="flex justify-center items-center">
                                     <div className="w-full p-8">
                                         <GuagesAndBlocksVector height={140} />
@@ -62,7 +62,7 @@ export const PremadeWidgets = () => {
                     </div>
                     <div className="col-auto">
                         <Card className="h-full">
-                            <CardBody className="overflow-visible p-0">
+                            <CardBody className="overflow-visible p-0 bg-gray-800 rounded-xl">
                                 <div className="flex justify-center items-center">
                                     <div className="w-full p-8">
                                         <ButtonToggleVector height={140} />
@@ -77,7 +77,7 @@ export const PremadeWidgets = () => {
                     </div>
                     <div className="col-auto">
                         <Card className="h-full">
-                            <CardBody className="overflow-visible p-0">
+                            <CardBody className="overflow-visible p-0 bg-gray-800 rounded-xl">
                                 <div className="flex justify-center items-center">
                                     <div className="w-full p-8">
                                         <DataBlocksVector height={140} />
@@ -92,7 +92,7 @@ export const PremadeWidgets = () => {
                     </div>
                     <div className="col-auto">
                         <Card className="h-full">
-                            <CardBody className="overflow-visible p-0">
+                            <CardBody className="overflow-visible p-0 bg-gray-800 rounded-xl">
                                 <div className="flex justify-center items-center">
                                     <div className="w-full p-8">
                                         <IconsVector height={140} />
