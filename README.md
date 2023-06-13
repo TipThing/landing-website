@@ -1,6 +1,7 @@
-# Next.js & NextUI Template
+# TipThing Landing Page
 
-This is a template for creating applications using Next.js 13 (app directory) and NextUI (v2).
+This is the official TipThing landing-page code repo. Currently, it serves as the source of truth for the coming soon page,
+with future plans being to migrate the coming soon page and customize it to eventually serve as the official landing website.
 
 ## Technologies Used
 
@@ -11,14 +12,3 @@ This is a template for creating applications using Next.js 13 (app directory) an
 - [TypeScript](https://www.typescriptlang.org/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
-
-## How to Use
-
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
-## License
-
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
