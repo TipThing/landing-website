@@ -32,7 +32,7 @@ export const siteConfig = {
 		}
 	],
 	links: {
-		github: "#",
+		github: "https://github.com/TipThing",
 		twitter: "#",
 		docs: "#",
 		discord: "#",
