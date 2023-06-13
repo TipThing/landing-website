@@ -10,8 +10,8 @@ export const RealtimeCollaboration = () => {
 	const { theme } = useTheme();
 
 	return (
-		<div className="flex flex-col xl:flex-row lg:flex-row md:flex-col sm:flex-col">
-			<div className="grow-0 xl:ml-16 lg:ml-16">
+		<div className="flex flex-col xl:flex-row lg:flex-row md:flex-row sm:flex-col">
+			<div className="grow xl:ml-16 lg:ml-16 self-center md:self-auto lg:self-auto xl:self-auto">
 				<Card radius="2xl" className="h-[525px] w-[350px] dark:border-none border-[1px] border-gray-200 dark:bg-gradient-to-bl dark:from-[#0E0A26] dark:to-[#1F242E]">
 					<div className="flex justify-center items-center w-full h-full">
 						<svg width="80%" height="auto" viewBox="0 0 671 690" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,11 +29,11 @@ export const RealtimeCollaboration = () => {
 					</div>
 				</Card>
 			</div>
-			<div className="grow mx-16 xl:mr-40 lg:mr-40 my-36 text-right items-end order-first lg:order-last xl:order-last">
+			<div className="grow mx-16 xl:mr-40 lg:mr-40 mb-16 text-center xl:text-right lg:text-right md:text-right items-start xl:items-end lg:items-end md:items-end order-first lg:order-last xl:order-last md:order-last">
 				<span className="text-sm bg-gradient-to-r dark:from-pink-200 dark:to-blue-500 from-pink-500 to-blue-700 text-transparent bg-clip-text">
 					CROSS-TEAM COLLABORATION
 				</span>
-				<div className="relative flex flex-col gap-8 items-end">
+				<div className="relative flex flex-col gap-8">
 					<h2 className="text-4xl font-bold">Real-time Collaboration <br /> for teams</h2>
 					<p className="max-w-4xl">
 						Tipthing gives you the tools to collaborate with your team in real-time. See each other&apos;s actions, work together in a

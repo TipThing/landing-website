@@ -8,11 +8,11 @@ import { Card, Chip } from "@nextui-org/react";
 export const DashboardBuilder = () => {
 
 	return (
-		<div className="flex flex-col xl:flex-row lg:flex-row md:flex-col sm:flex-col">
-			<div className="grow mx-16 xl:mr-40 lg:mr-40 my-16">
-				<div className="text-sm bg-gradient-to-r dark:from-blue-500 dark:to-pink-200 from-blue-700 to-pink-500 text-transparent bg-clip-text max-w-fit">
+		<div className="flex flex-col xl:flex-row lg:flex-row md:flex-row sm:flex-col">
+			<div className="grow mx-16 xl:mr-40 lg:mr-40 mb-16 text-center md:text-left lg:text-left xl:text-left">
+				<span className="text-sm bg-gradient-to-r dark:from-blue-500 dark:to-pink-200 from-blue-700 to-pink-500 text-transparent bg-clip-text">
 					DRAG N DROP BUILDER
-				</div>
+				</span>
 				<div className="relative flex flex-col gap-8">
 					<h2 className="text-4xl font-bold">Easy to use <br /> Dashboard Builder</h2>
 					<p className="max-w-4xl">Build highly interactive dashboards with all the features, apps, and widgets that you desire. The Editor is designed to be easy to use and understand while having powerful features for designers and developers alike!</p>
@@ -80,10 +80,10 @@ export const DashboardBuilder = () => {
 					</div>
 				</div>
 			</div>
-			<div className="grow-0 xl:mr-16 lg:mr-16">
+			<div className="grow-0 xl:mr-16 lg:mr-16 self-center md:self-auto lg:self-auto xl:self-auto">
 				<Card
 					radius="2xl"
-					className="h-[525px] w-[350px] dark:border-none border-[1px] border-gray-200 dark:bg-gradient-to-tr dark:from-[#0E0A26] dark:to-[#1F242E]"
+					className="align-center h-[525px] w-[350px] dark:border-none border-[1px] border-gray-200 dark:bg-gradient-to-tr dark:from-[#0E0A26] dark:to-[#1F242E]"
 				>
 					<div className="flex justify-center items-center w-full h-full">
 						<svg width="80%" height="auto" viewBox="0 0 760 509" fill="none" xmlns="http://www.w3.org/2000/svg">
