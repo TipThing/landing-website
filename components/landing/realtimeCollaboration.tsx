@@ -36,7 +36,7 @@ export const RealtimeCollaboration = () => {
 				<div className="relative flex flex-col gap-8 items-end">
 					<h2 className="text-4xl font-bold">Real-time Collaboration <br /> for teams</h2>
 					<p className="max-w-4xl">
-						Tipthing gives you the tools to collaborate with your team in real-time. See each other's actions, work together in a
+						Tipthing gives you the tools to collaborate with your team in real-time. See each other&apos;s actions, work together in a
 						collaborative environment, and build dashboards and apps that are shared with everyone. Enhance teamwork and productivity seamlessly. </p>
 				</div>
 			</div>
