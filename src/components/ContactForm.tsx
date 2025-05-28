@@ -55,7 +55,7 @@ export function ContactForm() {
           </svg>
         </motion.div>
         <h3 className="text-2xl font-bold text-white">Thank you!</h3>
-        <p className="text-gray-300">We'll be in touch soon.</p>
+        <p className="text-gray-300">We&apos;ll be in touch soon.</p>
       </motion.div>
     );
   }
