@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useReducedMotion } from '../../lib/useReducedMotion';
 
 interface FAQItemProps {
   q: string;
@@ -9,6 +10,7 @@ interface FAQItemProps {
 
 export const FAQItem = ({ q, a }: FAQItemProps) => {
   const [open, setOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className="border-b border-white/5">
@@ -25,9 +27,10 @@ export const FAQItem = ({ q, a }: FAQItemProps) => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            initial={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            animate={prefersReducedMotion ? { opacity: 1 } : { height: "auto", opacity: 1 }}
+            exit={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0.1 : 0.3 }}
             className="overflow-hidden"
           >
             <p className="text-zinc-500 pb-6 leading-relaxed pr-8 text-sm">{a}</p>

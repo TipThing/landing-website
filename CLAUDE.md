@@ -25,30 +25,44 @@ pnpm preview
 
 # Run Astro CLI commands
 pnpm astro [command]
+
+# Performance analysis (requires build first)
+pnpm perf:check          # Bundle analysis and budget validation
+pnpm perf:bundle         # Detailed bundle size analysis
+pnpm perf:full           # Full performance suite (build + checks)
 ```
 
 ## Project Structure
 
 ```
 /
-├── public/           # Static assets (favicon, images)
+├── public/              # Static assets (favicon, images)
+├── scripts/             # Performance analysis scripts
 ├── src/
-│   ├── assets/       # Optimized assets (SVGs, images processed by Astro)
-│   ├── components/   # Astro components (.astro files)
-│   ├── layouts/      # Layout components (e.g., Layout.astro)
-│   └── pages/        # File-based routing (index.astro = homepage)
-├── astro.config.mjs  # Astro configuration
-└── tsconfig.json     # TypeScript config (extends astro/tsconfigs/strict)
+│   ├── assets/          # Optimized assets (SVGs, images processed by Astro)
+│   ├── components/
+│   │   ├── interactive/ # React components with client-side interactivity
+│   │   ├── layout/      # Layout components (NavBar, Footer)
+│   │   ├── sections/    # Page section components
+│   │   └── ui/          # Reusable UI components (buttons, cards)
+│   ├── layouts/         # Layout wrappers (e.g., Layout.astro)
+│   └── pages/           # File-based routing (index.astro = homepage)
+├── astro.config.mjs     # Astro configuration with React integration
+└── tsconfig.json        # TypeScript config (extends astro/tsconfigs/strict)
 ```
 
 ## Architecture Notes
 
+- **Hybrid rendering**: Astro components (static) + React components (interactive with `client:*` directives)
+- **React integration**: Configured for selective hydration in `components/ui/`, `components/interactive/`, and `components/layout/NavBar.tsx`
 - **File-based routing**: Pages in `src/pages/` automatically become routes
 - **Component-scoped styles**: `<style>` tags in `.astro` files are scoped by default
 - **Asset handling**:
   - `src/assets/` → Optimized by Astro, import and use `.src` property
   - `public/` → Served as-is, reference with `/filename`
-- **TypeScript**: Strict mode enabled, all files should follow strict typing
+- **TypeScript**: Strict mode enabled, path alias `@/*` maps to `src/*`
+- **Styling**: Tailwind CSS v4 via Vite plugin
+- **Performance budgets**: JS ≤150KB, CSS ≤30KB, Total ≤300KB (gzipped)
 
 ## Framework-Specific Patterns
 
@@ -76,6 +90,26 @@ import logo from '../assets/logo.svg'; // Optimized asset
 <img src={logo.src} alt="Logo" />
 <img src="/favicon.svg" alt="Favicon" /> <!-- Public asset -->
 ```
+
+### React Component Integration
+```astro
+---
+import InteractiveButton from '@/components/ui/StandardButton.tsx';
+---
+
+<!-- Client-side hydration strategies -->
+<InteractiveButton client:load />      <!-- Hydrate immediately -->
+<InteractiveButton client:idle />      <!-- Hydrate when browser idle -->
+<InteractiveButton client:visible />   <!-- Hydrate when visible -->
+```
+
+## Performance Optimization
+
+- **Code splitting**: React, Framer Motion, and Lucide icons split into separate chunks
+- **CSS optimization**: Inline critical CSS, code-split per component
+- **Dev warmup**: Pre-warms interactive components and layouts for faster HMR
+- **Prefetch**: Configured for hover strategy (not prefetch-all)
+- **Monitoring**: Run `pnpm perf:full` before deployment to validate budgets
 
 ## Git Workflow
 

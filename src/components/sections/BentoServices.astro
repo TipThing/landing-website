@@ -11,11 +11,12 @@ import {
 import { Code } from 'lucide-react';
 ---
 
+{/* All BentoServices components: client:visible - Below hero section, load when scrolled into view */}
 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[180px]">
     <!-- Large Feature 1: Bespoke Engineering (Span 8, Row 2) -->
-    <SpotlightCard className="md:col-span-8 md:row-span-2 bg-zinc-900/40 p-0 flex flex-col justify-between group overflow-hidden" client:load>
+    <SpotlightCard className="md:col-span-8 md:row-span-2 bg-zinc-900/40 p-0 flex flex-col justify-between group overflow-hidden" client:visible>
          <div class="absolute inset-0 opacity-50">
-            <WebAppVisual client:load />
+            <WebAppVisual client:visible />
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent z-10 pointer-events-none"></div>
         <div class="relative z-20 p-8 h-full flex flex-col justify-end">
@@ -26,10 +27,10 @@ import { Code } from 'lucide-react';
     </SpotlightCard>
 
     <!-- Small Feature: Cloud Arch (Span 4, Row 1) -->
-    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col justify-between bg-zinc-900/30 group hover:bg-zinc-900/50 transition-colors overflow-hidden relative" client:load>
+    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col justify-between bg-zinc-900/30 group hover:bg-zinc-900/50 transition-colors overflow-hidden relative" client:visible>
         <div class="flex flex-col h-full justify-between">
             <div class="absolute inset-0 opacity-50">
-                <CloudTopologyVisual client:load />
+                <CloudTopologyVisual client:visible />
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 to-transparent z-10"></div>
             <div class="relative z-20 p-6 mt-auto">
@@ -40,10 +41,10 @@ import { Code } from 'lucide-react';
     </SpotlightCard>
 
     <!-- Small Feature: Mobile (Span 4, Row 1) -->
-    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col bg-zinc-900/30 relative overflow-hidden group" client:load>
+    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col bg-zinc-900/30 relative overflow-hidden group" client:visible>
         <div class="flex flex-col h-full justify-between">
             <div class="absolute inset-0 opacity-50">
-                <UniversalPlatformVisual client:load />
+                <UniversalPlatformVisual client:visible />
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 to-transparent z-10"></div>
             <div class="relative z-20 p-6 mt-auto">
@@ -54,11 +55,11 @@ import { Code } from 'lucide-react';
     </SpotlightCard>
 
     <!-- Medium Feature: Tech Stack (Span 4, Row 1) - FIXED CONTENT SPACING -->
-    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col bg-zinc-900/30 relative overflow-hidden group" client:load>
+    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col bg-zinc-900/30 relative overflow-hidden group" client:visible>
         <div class="flex flex-col h-full">
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-zinc-800/20 via-zinc-950/80 to-zinc-950 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div class="relative z-10 flex-1 flex items-center justify-center min-h-0 py-2">
-                <TechStackVisual client:load />
+                <TechStackVisual client:visible />
             </div>
             <div class="relative z-10 px-6 py-3 border-t border-white/5 bg-zinc-950/30 backdrop-blur-sm mt-auto">
                 <h3 class="text-xs font-bold text-zinc-300 mb-0.5">Modern Stack</h3>
@@ -68,10 +69,10 @@ import { Code } from 'lucide-react';
     </SpotlightCard>
 
     <!-- Improved Feature: IoT Connectivity (Span 4, Row 1) -->
-    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col bg-zinc-900/30 relative overflow-hidden group" client:load>
+    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col bg-zinc-900/30 relative overflow-hidden group" client:visible>
         <div class="flex flex-col h-full justify-between">
             <div class="absolute inset-0 opacity-60">
-                <SignalPulseVisual client:load />
+                <SignalPulseVisual client:visible />
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 to-transparent z-10"></div>
             <div class="relative z-20 p-6 mt-auto">
@@ -82,10 +83,10 @@ import { Code } from 'lucide-react';
     </SpotlightCard>
 
     <!-- Improved Feature: Digital Transformation (Span 4, Row 1) -->
-    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col bg-zinc-900/30 relative overflow-hidden group" client:load>
+    <SpotlightCard className="md:col-span-4 md:row-span-1 p-0 flex flex-col bg-zinc-900/30 relative overflow-hidden group" client:visible>
         <div class="flex flex-col h-full justify-between">
             <div class="absolute inset-0 opacity-60">
-                 <MigrationVisual client:load />
+                 <MigrationVisual client:visible />
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 to-transparent z-10"></div>
             <div class="relative z-20 p-6 mt-auto">

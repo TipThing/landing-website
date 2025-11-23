@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/sections/PageHero.astro';
 import SpotlightCard from '../components/ui/SpotlightCard';
-import { StandardButton } from '../components/ui';
+import StandardButton from '../components/ui/StandardButton.astro';
 import { LineChart, Users } from 'lucide-react';
 
 const pageTitle = 'Company - TipThing';
@@ -33,9 +33,10 @@ const values = [
         description="We are a collective of engineers, designers, and strategists who believe in the power of well-crafted software."
       />
 
+      {/* All SpotlightCards: client:visible - Below fold, load when scrolled into view */}
       <!-- Stats Cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 pt-20">
-        <SpotlightCard client:load className="md:col-span-2 bg-zinc-900/20 p-8 flex flex-col justify-between min-h-[300px]">
+        <SpotlightCard client:visible className="md:col-span-2 bg-zinc-900/20 p-8 flex flex-col justify-between min-h-[300px]">
           <div class="flex justify-between items-start">
             <div class="p-3 rounded-lg bg-zinc-800/50 border border-white/5 inline-block">
               <LineChart className="text-white" size={24} />
@@ -48,7 +49,7 @@ const values = [
           </div>
         </SpotlightCard>
 
-        <SpotlightCard client:load className="bg-zinc-900/20 p-8 flex flex-col justify-between min-h-[300px]">
+        <SpotlightCard client:visible className="bg-zinc-900/20 p-8 flex flex-col justify-between min-h-[300px]">
           <div class="p-3 rounded-lg bg-zinc-800/50 border border-white/5 inline-block w-fit">
             <Users className="text-white" size={24} />
           </div>
@@ -62,7 +63,7 @@ const values = [
       <!-- Values -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
         {values.map((val, i) => (
-          <SpotlightCard client:load className="p-8 bg-zinc-900/20">
+          <SpotlightCard client:visible className="p-8 bg-zinc-900/20">
             <div class="text-5xl font-bold text-zinc-800 mb-6">0{i + 1}</div>
             <h4 class="text-xl font-bold text-white mb-3">{val.title}</h4>
             <p class="text-zinc-400 leading-relaxed">{val.description}</p>
@@ -82,12 +83,13 @@ const values = [
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a href="/contact" class="w-full sm:w-auto">
-            <StandardButton client:load className="w-full sm:w-auto px-10">
+            {/* Bottom CTA: client:visible - Far below fold, load when scrolled into view */}
+            <StandardButton class="w-full sm:w-auto px-10">
               Start a Project
             </StandardButton>
           </a>
           <a href="/" class="w-full sm:w-auto">
-            <StandardButton client:load variant="outline" className="w-full sm:w-auto px-10">
+            <StandardButton variant="outline" className="w-full sm:w-auto px-10">
               Back to Home
             </StandardButton>
           </a>

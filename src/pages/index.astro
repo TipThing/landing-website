@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SpotlightCard from "../components/ui/SpotlightCard";
-import { StandardButton } from "../components/ui";
+import StandardButton from "../components/ui/StandardButton.astro";
 import SectionHeader from "../components/sections/SectionHeader.astro";
 import BentoServices from "../components/sections/BentoServices.astro";
 import Methodology from "../components/sections/Methodology.astro";
@@ -68,15 +68,15 @@ const pageDescription =
       <!-- CTA Buttons -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="/contact" class="w-full sm:w-auto">
-          <StandardButton client:load className="w-full sm:w-auto px-8">
+          {/* Hero CTA: No client directive needed - Native Astro component */}
+          <StandardButton class="w-full sm:w-auto px-8">
             Start a Project
           </StandardButton>
         </a>
         <a href="/products" class="w-full sm:w-auto">
           <StandardButton
-            client:load
             variant="secondary"
-            className="w-full sm:w-auto px-8"
+            class="w-full sm:w-auto px-8"
           >
             View Products
           </StandardButton>
@@ -193,8 +193,9 @@ const pageDescription =
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Logable - Large Featured -->
+        {/* Product showcases: client:visible - Below fold, load when scrolled into view */}
         <SpotlightCard
-          client:load
+          client:visible
           className="md:col-span-2 md:row-span-2 bg-zinc-900/30"
         >
           <div class="p-8 h-full flex flex-col">
@@ -212,13 +213,13 @@ const pageDescription =
             <div
               class="flex-1 rounded-lg border border-white/5 bg-[#09090b] overflow-hidden relative shadow-2xl"
             >
-              <LogableUI client:load />
+              <LogableUI client:visible />
             </div>
           </div>
         </SpotlightCard>
 
         <!-- AssetDock - Small -->
-        <SpotlightCard client:load className="bg-zinc-900/30">
+        <SpotlightCard client:visible className="bg-zinc-900/30">
           <div class="p-6 h-full flex flex-col">
             <h3 class="text-lg font-bold text-white mb-1">AssetDock</h3>
             <p class="text-zinc-500 text-xs mb-6">
@@ -227,13 +228,13 @@ const pageDescription =
             <div
               class="flex-1 rounded border border-white/5 bg-[#09090b] overflow-hidden relative"
             >
-              <AssetDockSimpleUI client:load />
+              <AssetDockSimpleUI client:visible />
             </div>
           </div>
         </SpotlightCard>
 
         <!-- Fitsy - Small -->
-        <SpotlightCard client:load className="bg-zinc-900/30">
+        <SpotlightCard client:visible className="bg-zinc-900/30">
           <div class="p-6 h-full flex flex-col">
             <h3 class="text-lg font-bold text-white mb-1">Fitsy</h3>
             <p class="text-zinc-500 text-xs mb-6">
@@ -242,7 +243,7 @@ const pageDescription =
             <div
               class="flex-1 rounded border border-white/5 bg-[#09090b] overflow-hidden relative"
             >
-              <FitsySimpleUI client:load />
+              <FitsySimpleUI client:visible />
             </div>
           </div>
         </SpotlightCard>
@@ -403,15 +404,15 @@ const pageDescription =
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a href="/contact" class="w-full sm:w-auto">
-          <StandardButton client:load className="w-full sm:w-auto px-10">
+          {/* Bottom CTA: No client directive needed - Native Astro component */}
+          <StandardButton class="w-full sm:w-auto px-10">
             Start a Project
           </StandardButton>
         </a>
         <a href="/company" class="w-full sm:w-auto">
           <StandardButton
-            client:load
             variant="outline"
-            className="w-full sm:w-auto px-10"
+            class="w-full sm:w-auto px-10"
           >
             Learn About Us
           </StandardButton>

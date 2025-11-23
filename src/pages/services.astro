@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/sections/PageHero.astro';
 import SpotlightCard from '../components/ui/SpotlightCard';
-import { StandardButton } from '../components/ui';
+import StandardButton from '../components/ui/StandardButton.astro';
 import {
   UniversalPlatformVisual,
   FullStackVisual,
@@ -65,6 +65,7 @@ const services = [
         description="We replace intuition with engineering. Our bespoke solutions are built on robust, scalable architectures."
       />
 
+      {/* All service visuals: client:visible - Below fold, load when scrolled into view */}
       <div class="flex flex-col gap-20 mb-20 pt-20">
         {services.map((service, i) => {
           const IconComponent = service.icon;
@@ -80,17 +81,17 @@ const services = [
                 <p class="text-zinc-400 leading-relaxed mb-8 text-lg">{service.desc}</p>
               </div>
               <SpotlightCard
-                client:load
+                client:visible
                 className={`aspect-square md:aspect-[4/3] order-1 ${isEven ? 'md:order-2' : 'md:order-1'}`}
               >
                 <div class="h-full w-full p-1 bg-zinc-900/50">
                   <div class="h-full w-full rounded bg-zinc-950 border border-white/5 overflow-hidden relative">
-                    {service.title === "Desktop & Mobile Apps" && <UniversalPlatformVisual client:load />}
-                    {service.title === "Full Stack Cloud Solutions" && <FullStackVisual client:load />}
-                    {service.title === "Web Application Development" && <WebAppVisual client:load />}
-                    {service.title === "Cloud Infrastructure" && <DataArchitectureVisual client:load />}
-                    {service.title === "DevOps & CI/CD" && <DevOpsPipelineVisual client:load />}
-                    {service.title === "Legacy Modernization" && <ModernizationVisual client:load />}
+                    {service.title === "Desktop & Mobile Apps" && <UniversalPlatformVisual client:visible />}
+                    {service.title === "Full Stack Cloud Solutions" && <FullStackVisual client:visible />}
+                    {service.title === "Web Application Development" && <WebAppVisual client:visible />}
+                    {service.title === "Cloud Infrastructure" && <DataArchitectureVisual client:visible />}
+                    {service.title === "DevOps & CI/CD" && <DevOpsPipelineVisual client:visible />}
+                    {service.title === "Legacy Modernization" && <ModernizationVisual client:visible />}
                   </div>
                 </div>
               </SpotlightCard>
@@ -111,12 +112,13 @@ const services = [
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a href="/contact" class="w-full sm:w-auto">
-            <StandardButton client:load className="w-full sm:w-auto px-10">
+            {/* Bottom CTA: client:visible - Far below fold, load when scrolled into view */}
+            <StandardButton class="w-full sm:w-auto px-10">
               Start a Project
             </StandardButton>
           </a>
           <a href="/company" class="w-full sm:w-auto">
-            <StandardButton client:load variant="outline" className="w-full sm:w-auto px-10">
+            <StandardButton variant="outline" className="w-full sm:w-auto px-10">
               Learn About Us
             </StandardButton>
           </a>

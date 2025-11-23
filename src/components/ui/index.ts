@@ -1,14 +1,16 @@
 /**
- * UI Components - Astro-compatible React components
+ * UI Components - Mixed Astro and React components
  *
- * This module exports reusable UI components that can be used as React islands in Astro pages.
+ * This module exports reusable UI components.
+ * - StandardButton: Native Astro component (import directly from .astro file)
+ * - SpotlightCard: React component for interactive mouse tracking
  * All components are fully typed with TypeScript and follow accessibility best practices.
  *
  * @module ui
  */
 
-export { StandardButton } from './StandardButton';
-export type { StandardButtonProps } from './StandardButton';
+// Note: StandardButton is now a native Astro component
+// Import it directly: import StandardButton from './StandardButton.astro'
 
 export { SpotlightCard } from './SpotlightCard';
 export type { SpotlightCardProps } from './SpotlightCard';

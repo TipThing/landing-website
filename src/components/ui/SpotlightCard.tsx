@@ -5,6 +5,7 @@ import {
   useMotionTemplate,
   type MotionValue,
 } from 'framer-motion';
+import { useReducedMotion } from '../../lib/useReducedMotion';
 
 /**
  * Utility function to combine class names
@@ -62,15 +63,19 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
 }) => {
   const mouseX: MotionValue<number> = useMotionValue(0);
   const mouseY: MotionValue<number> = useMotionValue(0);
+  const prefersReducedMotion = useReducedMotion();
 
   /**
    * Track mouse position relative to card for spotlight effect
+   * Disabled when user prefers reduced motion
    */
   const handleMouseMove = ({
     currentTarget,
     clientX,
     clientY,
   }: React.MouseEvent<HTMLDivElement>): void => {
+    if (prefersReducedMotion) return; // Skip tracking if reduced motion preferred
+
     const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
@@ -78,8 +83,10 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
 
   /**
    * Generate radial gradient background that follows mouse position
+   * For reduced motion, use a static gradient instead
    */
   const background = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, ${spotlightColor}, transparent 80%)`;
+  const staticBackground = `radial-gradient(600px circle at 50% 50%, ${spotlightColor}, transparent 80%)`;
 
   return (
     <div
@@ -97,7 +104,10 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
       {/* Spotlight effect layer */}
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-500 group-hover:opacity-100"
-        style={{ background }}
+        style={{
+          background: prefersReducedMotion ? staticBackground : background,
+          willChange: 'opacity' // GPU hint for better performance
+        }}
         aria-hidden="true"
       />
     </div>

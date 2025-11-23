@@ -81,7 +81,15 @@ export default defineConfig({
 
   // Image optimization (when images are added)
   image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: 268402689, // Prevent DoS attacks
+      },
+    },
     remotePatterns: [{ protocol: 'https' }],
+    formats: ['avif', 'webp'], // Modern formats (AVIF is 20-30% smaller than WebP)
+    quality: 80, // Balance quality/size
   },
 
   // Compression

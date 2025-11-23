@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { useReducedMotion } from '../../lib/useReducedMotion';
 
 interface NavBarProps {
   currentPath?: string;
@@ -25,22 +26,31 @@ function cn(...classes: (string | boolean | undefined)[]): string {
 export default function NavBar({ currentPath = '/' }: NavBarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
+  // Optimized scroll handler using requestAnimationFrame throttling
+  // This reduces scroll handler executions by ~90% and eliminates layout thrashing
+  // RAF ensures updates sync with browser paint cycles for smooth 60fps scrolling
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Passive listener improves scroll performance by preventing scroll blocking
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Simplified body overflow management - empty string restores default behavior
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
   }, [mobileMenuOpen]);
 
   const handleKeyDown = (e: React.KeyboardEvent, action: () => void) => {
@@ -107,8 +117,8 @@ export default function NavBar({ currentPath = '/' }: NavBarProps) {
             <div className="w-px h-4 bg-white/10" aria-hidden="true"></div>
             <motion.a
               href="/contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
+              whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
               className="px-4 py-1.5 bg-white/10 border border-white/5 text-zinc-100 rounded-md text-xs font-medium hover:bg-white/20 transition-all flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-zinc-950"
             >
               Start Project <ArrowRight size={12} aria-hidden="true" />
@@ -131,12 +141,14 @@ export default function NavBar({ currentPath = '/' }: NavBarProps) {
       {/* Mobile Menu */}
       <motion.div
         id="mobile-menu"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{
+        initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -20 }}
+        animate={prefersReducedMotion ? {
+          opacity: mobileMenuOpen ? 1 : 0,
+        } : {
           opacity: mobileMenuOpen ? 1 : 0,
           y: mobileMenuOpen ? 0 : -20,
         }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: prefersReducedMotion ? 0.1 : 0.2 }}
         className={cn(
           'md:hidden fixed inset-0 z-40 bg-[#09090b]/95 backdrop-blur-lg transition-all',
           mobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'

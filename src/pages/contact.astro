@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { StandardButton } from '../components/ui';
+import StandardButton from '../components/ui/StandardButton.astro';
 import WorldMap from '../components/interactive/WorldMap';
 import { Mail, MapPin, ArrowRight } from 'lucide-react';
 
@@ -117,7 +117,8 @@ const pageDescription = 'Tell us about your technical challenges. We typically r
               ></textarea>
             </div>
             <div class="mt-2">
-              <StandardButton client:load className="w-full">
+              {/* Form submit button: No client directive needed - Native Astro component */}
+              <StandardButton class="w-full">
                 Send Request
                 <ArrowRight size={16} />
               </StandardButton>
