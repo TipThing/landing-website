@@ -1,0 +1,290 @@
+---
+/**
+ * Example SEO Implementation
+ * Demonstrates various SEO component usage patterns
+ *
+ * This file can be deleted after reviewing the examples
+ */
+
+import Layout from '../layouts/Layout.astro';
+import SEO from '../components/SEO.astro';
+import {
+  createArticleSchema,
+  createFAQSchema,
+  createBreadcrumbSchema,
+  getTipthingDefaultSchema
+} from '../lib/seo-helpers';
+import { getPageSEO, seoConfig } from '../lib/seo-config';
+
+// Example 1: Using Layout component (recommended for most pages)
+const useLayoutExample = false; // Set to true to see this example
+
+// Example 2: Direct SEO component usage
+const useDirectSEO = true; // Set to true to see this example
+
+// Example 3: Blog post with Article schema
+const blogPost = createArticleSchema({
+  headline: 'How Digital Tipping is Transforming Hospitality',
+  description: 'Explore the impact of contactless tipping on the restaurant industry',
+  datePublished: '2025-01-15',
+  dateModified: '2025-01-20',
+  authorName: 'Jane Smith',
+  authorUrl: 'https://tipthing.com/authors/jane-smith',
+  publisher: 'Tipthing',
+  publisherLogo: 'https://tipthing.com/logo.png',
+  image: '/blog/digital-tipping-hospitality.jpg',
+  keywords: ['digital tipping', 'hospitality', 'restaurant technology'],
+  url: 'https://tipthing.com/blog/digital-tipping-transformation',
+});
+
+// Example 4: FAQ structured data
+const faqData = createFAQSchema([
+  {
+    question: 'How does Tipthing work?',
+    answer: 'Tipthing provides QR codes that customers can scan to leave tips instantly using their mobile devices. No app download required.',
+  },
+  {
+    question: 'What payment methods are accepted?',
+    answer: 'We accept all major credit cards, debit cards, Apple Pay, and Google Pay through our secure payment processing.',
+  },
+  {
+    question: 'How long does it take to receive tips?',
+    answer: 'Tips are deposited directly to your bank account within 1-2 business days, depending on your bank.',
+  },
+]);
+
+// Example 5: Breadcrumb navigation
+const breadcrumbs = createBreadcrumbSchema([
+  { name: 'Home', url: 'https://tipthing.com' },
+  { name: 'Resources', url: 'https://tipthing.com/resources' },
+  { name: 'SEO Examples', url: 'https://tipthing.com/example-seo' },
+]);
+
+// Combine multiple schemas
+const allSchemas = [
+  ...getTipthingDefaultSchema(Astro.site?.toString() || seoConfig.siteUrl),
+  blogPost,
+  faqData,
+  breadcrumbs,
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="generator" content={Astro.generator} />
+
+    {useDirectSEO && (
+      <SEO
+        title="SEO Implementation Examples - Tipthing"
+        description="Learn how to implement comprehensive SEO on your Tipthing pages with meta tags, Open Graph, and structured data."
+        keywords={[
+          'SEO examples',
+          'meta tags',
+          'Open Graph',
+          'structured data',
+          'JSON-LD',
+          'Astro SEO',
+        ]}
+        openGraph={{
+          type: 'article',
+          image: {
+            url: 'https://tipthing.com/examples/seo-guide.png',
+            width: 1200,
+            height: 630,
+            alt: 'SEO Implementation Guide',
+          },
+          article: {
+            publishedTime: '2025-01-15T00:00:00Z',
+            modifiedTime: '2025-01-20T00:00:00Z',
+            author: 'Tipthing Team',
+            section: 'Guides',
+            tags: ['SEO', 'Web Development', 'Best Practices'],
+          },
+        }}
+        twitter={{
+          card: 'summary_large_image',
+          site: '@tipthing',
+          creator: '@tipthing',
+          image: 'https://tipthing.com/examples/seo-guide.png',
+          imageAlt: 'Complete SEO guide for Tipthing pages',
+        }}
+        jsonLd={allSchemas}
+      />
+    )}
+  </head>
+  <body>
+    <main style="max-width: 800px; margin: 0 auto; padding: 2rem; font-family: system-ui;">
+      <h1>SEO Implementation Examples</h1>
+
+      <p style="background: #f0f9ff; padding: 1rem; border-radius: 8px; border-left: 4px solid #0284c7;">
+        <strong>Note:</strong> This is an example page showing various SEO implementations.
+        View the page source to see the generated meta tags and structured data.
+      </p>
+
+      <section>
+        <h2>What's Included on This Page</h2>
+        <ul>
+          <li><strong>Basic Meta Tags:</strong> Title, description, keywords</li>
+          <li><strong>Open Graph Tags:</strong> Social media sharing optimization</li>
+          <li><strong>Twitter Cards:</strong> Enhanced Twitter previews</li>
+          <li><strong>Article Schema:</strong> Rich results for blog posts</li>
+          <li><strong>FAQ Schema:</strong> FAQ rich snippets in search</li>
+          <li><strong>Breadcrumb Schema:</strong> Navigation breadcrumbs</li>
+          <li><strong>Organization Schema:</strong> Company information</li>
+          <li><strong>WebSite Schema:</strong> Site-level data</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>How to Test This Page</h2>
+
+        <div style="background: #fefce8; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+          <h3>1. View Page Source</h3>
+          <p>Right-click and select "View Page Source" to see all meta tags and JSON-LD structured data.</p>
+        </div>
+
+        <div style="background: #f0fdf4; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+          <h3>2. Google Rich Results Test</h3>
+          <p>
+            Test URL:
+            <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener">
+              search.google.com/test/rich-results
+            </a>
+          </p>
+        </div>
+
+        <div style="background: #fef2f2; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+          <h3>3. Facebook Sharing Debugger</h3>
+          <p>
+            Test URL:
+            <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">
+              developers.facebook.com/tools/debug
+            </a>
+          </p>
+        </div>
+
+        <div style="background: #eff6ff; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+          <h3>4. Twitter Card Validator</h3>
+          <p>
+            Test URL:
+            <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener">
+              cards-dev.twitter.com/validator
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sample FAQ Content (with FAQ Schema)</h2>
+        <div style="border-left: 3px solid #0284c7; padding-left: 1rem; margin: 1rem 0;">
+          <h3>How does Tipthing work?</h3>
+          <p>Tipthing provides QR codes that customers can scan to leave tips instantly using their mobile devices. No app download required.</p>
+
+          <h3>What payment methods are accepted?</h3>
+          <p>We accept all major credit cards, debit cards, Apple Pay, and Google Pay through our secure payment processing.</p>
+
+          <h3>How long does it take to receive tips?</h3>
+          <p>Tips are deposited directly to your bank account within 1-2 business days, depending on your bank.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Implementation Code Examples</h2>
+
+        <h3>Basic Page with Layout</h3>
+        <pre style="background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>---
+import Layout from '../layouts/Layout.astro';
+---
+
+&lt;Layout
+  title="About Us"
+  description="Learn about our mission"
+  keywords=&#123;['about', 'mission']&#125;
+&gt;
+  &lt;h1&gt;About Page Content&lt;/h1&gt;
+&lt;/Layout&gt;</code></pre>
+
+        <h3>Blog Post with Article Schema</h3>
+        <pre style="background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>---
+import SEO from '../components/SEO.astro';
+import &#123; createArticleSchema &#125; from '../lib/seo-helpers';
+
+const article = createArticleSchema(&#123;
+  headline: 'Blog Post Title',
+  datePublished: '2025-01-15',
+  authorName: 'Author Name',
+  publisher: 'Tipthing',
+  publisherLogo: 'https://tipthing.com/logo.png',
+&#125;);
+---
+
+&lt;SEO
+  title="Blog Post Title"
+  openGraph=&#123;&#123; type: 'article' &#125;&#125;
+  jsonLd=&#123;article&#125;
+/&gt;</code></pre>
+
+        <h3>Product Page</h3>
+        <pre style="background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>---
+import &#123; createProductSchema &#125; from '../lib/seo-helpers';
+
+const product = createProductSchema(&#123;
+  name: 'Pro Plan',
+  price: '29.99',
+  priceCurrency: 'USD',
+  availability: 'InStock',
+&#125;);
+---
+
+&lt;SEO
+  title="Pro Plan - Pricing"
+  openGraph=&#123;&#123; type: 'product' &#125;&#125;
+  jsonLd=&#123;product&#125;
+/&gt;</code></pre>
+      </section>
+
+      <section>
+        <h2>Core Web Vitals Optimization</h2>
+        <p>This SEO implementation includes optimizations for:</p>
+        <ul>
+          <li><strong>LCP (Largest Contentful Paint):</strong> &lt; 2.5s - Optimized meta tags loading</li>
+          <li><strong>INP (Interaction to Next Paint):</strong> &lt; 200ms - Minimal JavaScript</li>
+          <li><strong>CLS (Cumulative Layout Shift):</strong> &lt; 0.1 - No layout shifts from meta tags</li>
+        </ul>
+      </section>
+
+      <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e5e7eb; color: #6b7280;">
+        <p>
+          <strong>Documentation:</strong> See
+          <code>/docs/SEO_DOCUMENTATION.md</code> for complete implementation guide
+        </p>
+        <p>
+          <strong>Components:</strong>
+          <code>/src/components/SEO.astro</code> |
+          <code>/src/lib/seo-helpers.ts</code> |
+          <code>/src/lib/seo-config.ts</code>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<!--
+  ALTERNATIVE: Using Layout component (simpler)
+  Uncomment this section and comment out the above to see Layout usage
+-->
+
+{useLayoutExample && (
+  <Layout
+    title="SEO Examples"
+    description="Example implementations of SEO component"
+    keywords={['SEO', 'examples', 'meta tags']}
+  >
+    <main style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+      <h1>SEO Examples - Using Layout Component</h1>
+      <p>This version uses the Layout component for simpler implementation.</p>
+    </main>
+  </Layout>
+)}

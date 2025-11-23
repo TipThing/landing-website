@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/sections/PageHero.astro';
+import SpotlightCard from '../components/ui/SpotlightCard';
+import { StandardButton } from '../components/ui';
+import {
+  UniversalPlatformVisual,
+  FullStackVisual,
+  DataArchitectureVisual,
+  DevOpsPipelineVisual,
+  ModernizationVisual
+} from '../components/interactive/AdvancedVisuals';
+import { WebAppVisual } from '../components/interactive';
+import { Monitor, Layers, Layout, Server, RefreshCw, TerminalSquare } from 'lucide-react';
+
+const pageTitle = 'Services - TipThing';
+const pageDescription = 'We replace intuition with engineering. Our bespoke solutions are built on robust, scalable architectures.';
+
+const services = [
+  {
+    icon: Monitor,
+    title: "Desktop & Mobile Apps",
+    desc: "Native-performance applications using Electron and React Native. Seamless experience across all devices (iOS, Android, MacOS, Windows).",
+    visual: UniversalPlatformVisual
+  },
+  {
+    icon: Layers,
+    title: "Full Stack Cloud Solutions",
+    desc: "End-to-end architecture from database design to frontend implementation. Scalable, secure, and built for growth.",
+    visual: FullStackVisual
+  },
+  {
+    icon: Layout,
+    title: "Web Application Development",
+    desc: "Complex, data-heavy web applications using React, Next.js, and TypeScript. Our focus is on performance and type safety.",
+    visual: WebAppVisual
+  },
+  {
+    icon: Server,
+    title: "Cloud Infrastructure",
+    desc: "Designing scalable schemas with PostgreSQL and Redis. We build resilient APIs that can handle spike loads without downtime.",
+    visual: DataArchitectureVisual
+  },
+  {
+    icon: RefreshCw,
+    title: "DevOps & CI/CD",
+    desc: "Automated build pipelines and deployment strategies. We ensure your code ships to production safely and frequently.",
+    visual: DevOpsPipelineVisual
+  },
+  {
+    icon: TerminalSquare,
+    title: "Legacy Modernization",
+    desc: "Strangling monoliths into microservices. We migrate legacy PHP/.NET systems to modern stacks with zero downtime.",
+    visual: ModernizationVisual
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} currentPath="/services">
+  <div class="min-h-screen pt-32 px-6 pb-20 bg-[#09090b] animate-in fade-in duration-500">
+    <div class="max-w-7xl mx-auto">
+      <PageHero
+        eyebrow="Our Capabilities"
+        title="Services."
+        description="We replace intuition with engineering. Our bespoke solutions are built on robust, scalable architectures."
+      />
+
+      <div class="flex flex-col gap-20 mb-20 pt-20">
+        {services.map((service, i) => {
+          const IconComponent = service.icon;
+          const isEven = i % 2 === 0;
+
+          return (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center group">
+              <div class={`order-2 ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+                <div class="w-12 h-12 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 mb-6">
+                  <IconComponent size={24} />
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">{service.title}</h3>
+                <p class="text-zinc-400 leading-relaxed mb-8 text-lg">{service.desc}</p>
+              </div>
+              <SpotlightCard
+                client:load
+                className={`aspect-square md:aspect-[4/3] order-1 ${isEven ? 'md:order-2' : 'md:order-1'}`}
+              >
+                <div class="h-full w-full p-1 bg-zinc-900/50">
+                  <div class="h-full w-full rounded bg-zinc-950 border border-white/5 overflow-hidden relative">
+                    {service.title === "Desktop & Mobile Apps" && <UniversalPlatformVisual client:load />}
+                    {service.title === "Full Stack Cloud Solutions" && <FullStackVisual client:load />}
+                    {service.title === "Web Application Development" && <WebAppVisual client:load />}
+                    {service.title === "Cloud Infrastructure" && <DataArchitectureVisual client:load />}
+                    {service.title === "DevOps & CI/CD" && <DevOpsPipelineVisual client:load />}
+                    {service.title === "Legacy Modernization" && <ModernizationVisual client:load />}
+                  </div>
+                </div>
+              </SpotlightCard>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="py-32 px-6 bg-gradient-to-b from-[#09090b] to-zinc-950 mt-20">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          Ready to build something remarkable?
+        </h2>
+        <p class="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Let's discuss your technical challenges. We typically respond within 24 hours.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="/contact" class="w-full sm:w-auto">
+            <StandardButton client:load className="w-full sm:w-auto px-10">
+              Start a Project
+            </StandardButton>
+          </a>
+          <a href="/company" class="w-full sm:w-auto">
+            <StandardButton client:load variant="outline" className="w-full sm:w-auto px-10">
+              Learn About Us
+            </StandardButton>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .fade-in {
+    animation-name: fade-in;
+  }
+
+  .duration-500 {
+    animation-duration: 0.5s;
+  }
+</style>

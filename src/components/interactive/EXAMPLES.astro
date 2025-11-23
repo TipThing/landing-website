@@ -1,0 +1,298 @@
+---
+/**
+ * Interactive Components - Usage Examples
+ *
+ * Copy and paste these examples into your Astro pages.
+ * Each example is production-ready and fully accessible.
+ */
+import { WorldMap } from '@/components/interactive/WorldMap';
+import { LogableUI } from '@/components/interactive/LogableUI';
+import { WebAppVisual } from '@/components/interactive/WebAppVisual';
+import {
+  AssetDockSimpleUI,
+  FitsySimpleUI,
+  FitsyBuilderUI,
+  AssetDockManagerUI,
+} from '@/components/interactive/ProductUIs';
+---
+
+<!--
+  EXAMPLE 1: Hero Section with WorldMap
+  Full-screen hero with immediate hydration
+-->
+<section class="h-screen w-full">
+  <WorldMap
+    client:load
+    className="w-full h-full"
+    ariaLabel="Global network visualization showing data connections"
+  />
+</section>
+
+<!--
+  EXAMPLE 2: Feature Grid with Multiple Components
+  Two-column layout with lazy hydration
+-->
+<section class="container mx-auto px-4 py-16">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Industrial Dashboard -->
+    <div class="rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+      <LogableUI client:visible className="w-full h-96" />
+    </div>
+
+    <!-- Code Editor Visual -->
+    <div class="rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+      <WebAppVisual client:visible className="w-full h-96" />
+    </div>
+  </div>
+</section>
+
+<!--
+  EXAMPLE 3: Stacked Sections with Loading States
+  Vertical layout with skeleton loaders
+-->
+<div class="space-y-16 py-16">
+  {/* WorldMap with loading skeleton */}
+  <section class="h-screen relative">
+    <div class="absolute inset-0 bg-zinc-900 animate-pulse" aria-hidden="true" />
+    <WorldMap client:visible className="relative z-10 w-full h-full" />
+  </section>
+
+  {/* LogableUI with loading skeleton */}
+  <section class="container mx-auto px-4 h-96 relative">
+    <div class="absolute inset-0 bg-zinc-900 animate-pulse rounded-lg" aria-hidden="true" />
+    <LogableUI client:visible className="relative z-10 w-full h-full" />
+  </section>
+</div>
+
+<!--
+  EXAMPLE 4: Responsive Sizing
+  Different heights for different screen sizes
+-->
+<section class="w-full">
+  <div class="h-64 sm:h-80 md:h-96 lg:h-[600px]">
+    <WebAppVisual
+      client:visible
+      className="w-full h-full"
+    />
+  </div>
+</section>
+
+<!--
+  EXAMPLE 5: Card Layout with Custom Styling
+  Component inside a styled card container
+-->
+<div class="max-w-4xl mx-auto p-8">
+  <div class="bg-zinc-950 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5">
+    <div class="p-6 border-b border-white/5">
+      <h2 class="text-2xl font-bold">Global Network</h2>
+      <p class="text-zinc-400 mt-2">Real-time connection monitoring</p>
+    </div>
+    <div class="h-96">
+      <WorldMap client:visible />
+    </div>
+  </div>
+</div>
+
+<!--
+  EXAMPLE 6: Side-by-Side Comparison
+  Two components with synchronized loading
+-->
+<section class="container mx-auto px-4 py-16">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold">Industrial Monitoring</h3>
+      <div class="h-80 border border-white/10 rounded-lg overflow-hidden">
+        <LogableUI client:visible />
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold">Application Preview</h3>
+      <div class="h-80 border border-white/10 rounded-lg overflow-hidden">
+        <WebAppVisual client:visible />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+  EXAMPLE 7: Full-Width Banner
+  Edge-to-edge component with gradient overlay
+-->
+<section class="relative w-full h-96 overflow-hidden">
+  {/* Gradient overlay */}
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950 z-10 pointer-events-none"
+    aria-hidden="true"
+  />
+
+  {/* WorldMap component */}
+  <WorldMap client:visible className="w-full h-full" />
+
+  {/* Content overlay */}
+  <div class="absolute inset-0 z-20 flex items-center justify-center">
+    <div class="text-center space-y-4">
+      <h2 class="text-4xl font-bold">Connected Globally</h2>
+      <p class="text-zinc-300">Real-time data across the world</p>
+    </div>
+  </div>
+</section>
+
+<!--
+  EXAMPLE 8: Tab Panel Integration
+  Component inside a tab interface
+-->
+<div class="max-w-6xl mx-auto p-8">
+  {/* Tabs would go here */}
+  <div class="border border-white/10 rounded-lg overflow-hidden">
+    <div class="h-96">
+      <LogableUI client:idle />
+    </div>
+  </div>
+</div>
+
+<!--
+  EXAMPLE 9: Mobile-Optimized Layout
+  Vertical stack on mobile, grid on desktop
+-->
+<section class="container mx-auto px-4 py-16">
+  <div class="flex flex-col lg:grid lg:grid-cols-3 gap-6">
+    <div class="h-64 lg:h-80 lg:col-span-2">
+      <WorldMap client:visible className="w-full h-full" />
+    </div>
+
+    <div class="h-64 lg:h-80">
+      <LogableUI client:visible className="w-full h-full" />
+    </div>
+
+    <div class="h-64 lg:h-80 lg:col-span-3">
+      <WebAppVisual client:visible className="w-full h-full" />
+    </div>
+  </div>
+</section>
+
+<!--
+  EXAMPLE 10: Dark/Light Mode Compatible
+  Component with theme-aware container
+-->
+<section class="dark:bg-zinc-950 bg-zinc-50 py-16">
+  <div class="container mx-auto px-4">
+    <div class="dark:border-white/10 border-zinc-200 border rounded-xl overflow-hidden">
+      <WebAppVisual
+        client:visible
+        className="w-full h-96"
+      />
+    </div>
+  </div>
+</section>
+
+<!--
+  EXAMPLE 11: AssetDock Simple UI - Asset Table
+  Compact asset list with live status and hover interactions
+-->
+<section class="container mx-auto px-4 py-16">
+  <div class="max-w-2xl mx-auto">
+    <h3 class="text-2xl font-bold mb-6">Asset Tracking</h3>
+    <div class="h-64 border border-white/10 rounded-lg overflow-hidden">
+      <AssetDockSimpleUI client:visible />
+    </div>
+  </div>
+</section>
+
+<!--
+  EXAMPLE 12: Fitsy Simple UI - Volume Tracking
+  Athlete profile with interactive volume visualization
+-->
+<section class="container mx-auto px-4 py-16">
+  <div class="max-w-md mx-auto">
+    <h3 class="text-2xl font-bold mb-6">Training Volume</h3>
+    <div class="h-64 bg-zinc-900 border border-white/10 rounded-lg overflow-hidden">
+      <FitsySimpleUI client:visible />
+    </div>
+  </div>
+</section>
+
+<!--
+  EXAMPLE 13: Fitsy Builder UI - Training Block
+  Complete training program interface with metrics and draggable cards
+-->
+<section class="container mx-auto px-4 py-16">
+  <div class="max-w-4xl mx-auto">
+    <h3 class="text-2xl font-bold mb-6">Program Builder</h3>
+    <div class="h-[600px] border border-white/10 rounded-lg overflow-hidden">
+      <FitsyBuilderUI client:visible />
+    </div>
+  </div>
+</section>
+
+<!--
+  EXAMPLE 14: AssetDock Manager UI - Full Interface
+  Complete asset management system with fleet view and inspection workflow
+-->
+<section class="container mx-auto px-4 py-16">
+  <div class="max-w-6xl mx-auto">
+    <h3 class="text-2xl font-bold mb-6">Asset Management</h3>
+    <div class="h-[600px] border border-white/10 rounded-lg overflow-hidden shadow-2xl">
+      <AssetDockManagerUI client:visible />
+    </div>
+  </div>
+</section>
+
+<!--
+  EXAMPLE 15: Product Demo Grid
+  All ProductUI components in a responsive grid layout
+-->
+<section class="container mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold mb-8 text-center">Product Showcase</h2>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- AssetDock Simple -->
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold">AssetDock - Simple View</h3>
+      <div class="h-64 border border-white/10 rounded-lg overflow-hidden">
+        <AssetDockSimpleUI client:visible />
+      </div>
+    </div>
+
+    <!-- Fitsy Simple -->
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold">Fitsy - Athlete Profile</h3>
+      <div class="h-64 bg-zinc-900 border border-white/10 rounded-lg overflow-hidden">
+        <FitsySimpleUI client:visible />
+      </div>
+    </div>
+
+    <!-- Fitsy Builder (full width) -->
+    <div class="lg:col-span-2 space-y-4">
+      <h3 class="text-xl font-bold">Fitsy - Program Builder</h3>
+      <div class="h-[500px] border border-white/10 rounded-lg overflow-hidden">
+        <FitsyBuilderUI client:visible />
+      </div>
+    </div>
+
+    <!-- AssetDock Manager (full width) -->
+    <div class="lg:col-span-2 space-y-4">
+      <h3 class="text-xl font-bold">AssetDock - Full Manager</h3>
+      <div class="h-[600px] border border-white/10 rounded-lg overflow-hidden shadow-2xl">
+        <AssetDockManagerUI client:visible />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Optional: Add custom styles for examples */
+  section {
+    scroll-margin-top: 2rem;
+  }
+
+  /* Ensure smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Add focus-visible styles for better accessibility */
+  :focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.5);
+    outline-offset: 2px;
+  }
+</style>

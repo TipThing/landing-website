@@ -1,0 +1,110 @@
+---
+/**
+ * EXAMPLE USAGE PAGE
+ *
+ * This demonstrates how to use the NavBar and Footer layout components.
+ * Delete this file after reviewing the implementation.
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Example Page - TipThing"
+  description="This is an example page showing layout component usage"
+  keywords={['example', 'demo', 'layout']}
+  currentPath="/example-usage"
+>
+  <div class="pt-32 pb-20 px-6 min-h-screen">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-8">
+        Layout Components Example
+      </h1>
+
+      <div class="prose prose-invert max-w-none">
+        <h2 class="text-2xl font-bold text-white mt-12 mb-4">NavBar Component</h2>
+        <p class="text-zinc-400 mb-4">
+          The NavBar is a React component with full TypeScript support and includes:
+        </p>
+        <ul class="text-zinc-400 space-y-2 mb-8">
+          <li>Scroll-based background transition</li>
+          <li>Mobile hamburger menu with smooth animations</li>
+          <li>Keyboard navigation support</li>
+          <li>ARIA labels for screen readers</li>
+          <li>Focus indicators for accessibility</li>
+          <li>Active page highlighting</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-white mt-12 mb-4">Footer Component</h2>
+        <p class="text-zinc-400 mb-4">
+          The Footer is an Astro component (server-rendered) and includes:
+        </p>
+        <ul class="text-zinc-400 space-y-2 mb-8">
+          <li>Responsive grid layout</li>
+          <li>SEO-friendly semantic HTML</li>
+          <li>Social media links with proper ARIA labels</li>
+          <li>Organized link sections</li>
+          <li>System status indicator</li>
+          <li>Copyright with dynamic year</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-white mt-12 mb-4">Usage Example</h2>
+        <pre class="bg-zinc-900 p-4 rounded-lg text-sm overflow-x-auto"><code class="text-zinc-300">---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+&lt;BaseLayout
+  title="Your Page Title"
+  description="Your page description"
+  keywords={['keyword1', 'keyword2']}
+  currentPath="/your-path"
+&gt;
+  &lt;!-- Your page content here --&gt;
+  &lt;div class="pt-32 px-6"&gt;
+    &lt;h1&gt;Your Content&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/BaseLayout&gt;</code></pre>
+
+        <h2 class="text-2xl font-bold text-white mt-12 mb-4">Accessibility Features</h2>
+        <ul class="text-zinc-400 space-y-2 mb-8">
+          <li><strong>Keyboard Navigation:</strong> All interactive elements accessible via Tab key</li>
+          <li><strong>Screen Reader Support:</strong> Proper ARIA labels and semantic HTML</li>
+          <li><strong>Focus Indicators:</strong> Clear visual feedback for keyboard users</li>
+          <li><strong>Skip Links:</strong> BaseLayout includes skip-to-main-content link</li>
+          <li><strong>Mobile Menu:</strong> Prevents body scroll when open, proper ARIA attributes</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-white mt-12 mb-4">File Structure</h2>
+        <pre class="bg-zinc-900 p-4 rounded-lg text-sm overflow-x-auto"><code class="text-zinc-300">src/
+├── components/
+│   └── layout/
+│       ├── NavBar.tsx       # React component (client:load)
+│       └── Footer.astro     # Astro component (server-only)
+└── layouts/
+    ├── Layout.astro         # Base HTML layout with SEO
+    └── BaseLayout.astro     # Complete layout with Nav + Footer</code></pre>
+
+        <h2 class="text-2xl font-bold text-white mt-12 mb-4">Responsive Design</h2>
+        <p class="text-zinc-400 mb-4">
+          Both components are fully responsive:
+        </p>
+        <ul class="text-zinc-400 space-y-2 mb-8">
+          <li><strong>Mobile (< 768px):</strong> Hamburger menu, stacked footer columns</li>
+          <li><strong>Tablet (768px+):</strong> Full navigation visible, 2-column footer</li>
+          <li><strong>Desktop (1024px+):</strong> Optimized spacing, 4-column footer grid</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Example page specific styles */
+  pre {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+  }
+</style>

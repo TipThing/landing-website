@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/sections/PageHero.astro';
+import SpotlightCard from '../components/ui/SpotlightCard';
+import { StandardButton } from '../components/ui';
+import { LineChart, Users } from 'lucide-react';
+
+const pageTitle = 'Company - TipThing';
+const pageDescription = 'We are a collective of engineers, designers, and strategists who believe in the power of well-crafted software.';
+
+const values = [
+  {
+    title: "Speed is a feature",
+    description: "Latency is the enemy."
+  },
+  {
+    title: "No vendor lock-in",
+    description: "Clean code that belongs to you."
+  },
+  {
+    title: "Tools over process",
+    description: "We automate the boring stuff."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} currentPath="/company">
+  <div class="min-h-screen pt-32 px-6 pb-20 bg-[#09090b] animate-in fade-in duration-500">
+    <div class="max-w-7xl mx-auto">
+      <PageHero
+        eyebrow="About Us"
+        title="Manifesto."
+        description="We are a collective of engineers, designers, and strategists who believe in the power of well-crafted software."
+      />
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 pt-20">
+        <SpotlightCard client:load className="md:col-span-2 bg-zinc-900/20 p-8 flex flex-col justify-between min-h-[300px]">
+          <div class="flex justify-between items-start">
+            <div class="p-3 rounded-lg bg-zinc-800/50 border border-white/5 inline-block">
+              <LineChart className="text-white" size={24} />
+            </div>
+            <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">Impact</span>
+          </div>
+          <div>
+            <div class="text-6xl font-bold text-white mb-2">1.2M+</div>
+            <p class="text-zinc-400">Daily active users across our platforms.</p>
+          </div>
+        </SpotlightCard>
+
+        <SpotlightCard client:load className="bg-zinc-900/20 p-8 flex flex-col justify-between min-h-[300px]">
+          <div class="p-3 rounded-lg bg-zinc-800/50 border border-white/5 inline-block w-fit">
+            <Users className="text-white" size={24} />
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-white mb-2">Global</div>
+            <p class="text-zinc-400">Remote-first team spanning 4 continents.</p>
+          </div>
+        </SpotlightCard>
+      </div>
+
+      <!-- Values -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+        {values.map((val, i) => (
+          <SpotlightCard client:load className="p-8 bg-zinc-900/20">
+            <div class="text-5xl font-bold text-zinc-800 mb-6">0{i + 1}</div>
+            <h4 class="text-xl font-bold text-white mb-3">{val.title}</h4>
+            <p class="text-zinc-400 leading-relaxed">{val.description}</p>
+          </SpotlightCard>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="py-32 px-6 bg-gradient-to-b from-[#09090b] to-zinc-950 mt-20">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          Ready to build something remarkable?
+        </h2>
+        <p class="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Let's discuss your technical challenges. We typically respond within 24 hours.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="/contact" class="w-full sm:w-auto">
+            <StandardButton client:load className="w-full sm:w-auto px-10">
+              Start a Project
+            </StandardButton>
+          </a>
+          <a href="/" class="w-full sm:w-auto">
+            <StandardButton client:load variant="outline" className="w-full sm:w-auto px-10">
+              Back to Home
+            </StandardButton>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .fade-in {
+    animation-name: fade-in;
+  }
+
+  .duration-500 {
+    animation-duration: 0.5s;
+  }
+</style>

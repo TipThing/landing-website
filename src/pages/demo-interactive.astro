@@ -1,0 +1,115 @@
+---
+/**
+ * Interactive Components Demo Page
+ *
+ * Demonstrates the three interactive visual components:
+ * - WorldMap: Animated world map with connection paths
+ * - LogableUI: Industrial dashboard with equipment widgets
+ * - WebAppVisual: Interactive code editor with live preview
+ */
+
+import { WorldMap } from '@/components/interactive/WorldMap';
+import { LogableUI } from '@/components/interactive/LogableUI';
+import { WebAppVisual } from '@/components/interactive/WebAppVisual';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive visual components demo with Framer Motion animations" />
+    <title>Interactive Components Demo</title>
+  </head>
+  <body class="bg-zinc-950 text-white min-h-screen">
+    <div class="container mx-auto px-4 py-16 space-y-16">
+      <!-- Header -->
+      <header class="text-center space-y-4">
+        <h1 class="text-4xl font-bold">Interactive Visual Components</h1>
+        <p class="text-zinc-400 max-w-2xl mx-auto">
+          High-performance React components with Framer Motion animations,
+          optimized for Astro's island architecture and viewport-based hydration.
+        </p>
+      </header>
+
+      <!-- WorldMap Component -->
+      <section class="space-y-4">
+        <div class="space-y-2">
+          <h2 class="text-2xl font-bold">WorldMap</h2>
+          <p class="text-zinc-400">
+            Animated world map with connection paths and traveling data points.
+            Features SVG-based rendering and GPU-accelerated animations.
+          </p>
+        </div>
+        <div class="w-full h-96 border border-white/10 rounded-lg overflow-hidden">
+          <WorldMap client:visible />
+        </div>
+        <div class="text-xs text-zinc-600 font-mono">
+          Usage: &lt;WorldMap client:visible /&gt;
+        </div>
+      </section>
+
+      <!-- LogableUI Component -->
+      <section class="space-y-4">
+        <div class="space-y-2">
+          <h2 class="text-2xl font-bold">LogableUI</h2>
+          <p class="text-zinc-400">
+            Industrial dashboard with real-time equipment monitoring widgets.
+            Includes silo level, conveyor belt, pump RPM, and weight scale visualizations.
+          </p>
+        </div>
+        <div class="w-full h-96 border border-white/10 rounded-lg overflow-hidden">
+          <LogableUI client:visible />
+        </div>
+        <div class="text-xs text-zinc-600 font-mono">
+          Usage: &lt;LogableUI client:visible /&gt;
+        </div>
+      </section>
+
+      <!-- WebAppVisual Component -->
+      <section class="space-y-4">
+        <div class="space-y-2">
+          <h2 class="text-2xl font-bold">WebAppVisual</h2>
+          <p class="text-zinc-400">
+            Interactive code editor with synchronized UI preview.
+            Hover over code elements to highlight corresponding UI components.
+            Fully keyboard accessible.
+          </p>
+        </div>
+        <div class="w-full h-96 border border-white/10 rounded-lg overflow-hidden">
+          <WebAppVisual client:visible />
+        </div>
+        <div class="text-xs text-zinc-600 font-mono">
+          Usage: &lt;WebAppVisual client:visible /&gt;
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="text-center pt-16 border-t border-white/10">
+        <div class="space-y-4">
+          <h3 class="text-lg font-semibold">Performance Features</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            <div class="p-4 bg-zinc-900/50 border border-white/5 rounded-lg">
+              <div class="text-emerald-500 font-mono text-sm mb-2">GPU Accelerated</div>
+              <p class="text-xs text-zinc-500">
+                All animations use transform and opacity for 60fps performance
+              </p>
+            </div>
+            <div class="p-4 bg-zinc-900/50 border border-white/5 rounded-lg">
+              <div class="text-indigo-500 font-mono text-sm mb-2">Lazy Hydration</div>
+              <p class="text-xs text-zinc-500">
+                Components hydrate only when visible in viewport
+              </p>
+            </div>
+            <div class="p-4 bg-zinc-900/50 border border-white/5 rounded-lg">
+              <div class="text-amber-500 font-mono text-sm mb-2">Accessible</div>
+              <p class="text-xs text-zinc-500">
+                Full keyboard navigation and ARIA label support
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

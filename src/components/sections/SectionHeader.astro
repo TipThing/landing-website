@@ -1,0 +1,30 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  action?: any;
+}
+
+const { eyebrow, title, description, action } = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-white/5 pb-8">
+    <div class="max-w-2xl">
+        <div class="flex items-center gap-3 mb-6">
+            <span class="h-px w-8 bg-white/20"></span>
+            <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">{eyebrow}</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+            {title}
+        </h2>
+        <p class="text-zinc-400 text-lg leading-relaxed max-w-xl">
+            {description}
+        </p>
+    </div>
+    {action && (
+       <div class="mb-2 shrink-0">
+          <slot name="action" />
+       </div>
+    )}
+</div>

@@ -1,0 +1,466 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SpotlightCard from "../components/ui/SpotlightCard";
+import { StandardButton } from "../components/ui";
+import SectionHeader from "../components/sections/SectionHeader.astro";
+import BentoServices from "../components/sections/BentoServices.astro";
+import Methodology from "../components/sections/Methodology.astro";
+import AuroraBackground from "../components/sections/AuroraBackground.astro";
+import {
+  LogableUI,
+  AssetDockSimpleUI,
+  FitsySimpleUI,
+} from "../components/interactive";
+import { ArrowRight } from "lucide-react";
+
+const pageTitle = "TipThing - Software, Solved.";
+const pageDescription =
+  "We engineer bespoke cloud architectures and deploy powerful pre-built tools. No fluff. Just precision software that moves your business forward.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} currentPath="/">
+  <!-- Aurora Hero Section -->
+  <AuroraBackground className="min-h-[75vh] border-b border-white/5">
+    <!-- Grid Pattern Overlay -->
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0"
+    >
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center mt-20 pt-20">
+      <!-- Status Badge -->
+      <div class="mb-8 flex justify-center">
+        <div
+          class="bg-zinc-900/50 border border-white/10 rounded-full px-3 py-1 flex items-center gap-2 text-[11px] text-zinc-400 backdrop-blur-md"
+        >
+          <span class="relative flex h-1.5 w-1.5">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-400 opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-1.5 w-1.5 bg-zinc-500"
+            ></span>
+          </span>
+          <span class="tracking-wide font-medium"
+            >Accepting New Partnerships for Q3</span
+          >
+        </div>
+      </div>
+
+      <!-- Main Heading -->
+      <h1
+        class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8 leading-[0.95]"
+      >
+        Software,<br class="hidden md:block" />
+        <span class="text-zinc-500">Solved.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p
+        class="text-lg text-zinc-400 max-w-xl mx-auto mb-12 leading-relaxed font-light"
+      >
+        We engineer bespoke cloud architectures and deploy powerful pre-built
+        tools. No fluff. Just precision software that moves your business
+        forward.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contact" class="w-full sm:w-auto">
+          <StandardButton client:load className="w-full sm:w-auto px-8">
+            Start a Project
+          </StandardButton>
+        </a>
+        <a href="/products" class="w-full sm:w-auto">
+          <StandardButton
+            client:load
+            variant="secondary"
+            className="w-full sm:w-auto px-8"
+          >
+            View Products
+          </StandardButton>
+        </a>
+      </div>
+    </div>
+  </AuroraBackground>
+
+  <!-- Marquee Section -->
+  <div class="py-10 bg-[#09090b] border-b border-white/5 overflow-hidden">
+    <div class="relative flex overflow-x-hidden group">
+      <div
+        class="marquee-content whitespace-nowrap flex gap-16 md:gap-32 px-16 text-zinc-700 font-bold text-xl tracking-tight select-none items-center opacity-60 grayscale"
+      >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >ACME Corp</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Nebula</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Vertex</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Horizon</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Oasis</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Apex</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Zenith</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Pulse</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >ACME Corp</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Nebula</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Vertex</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Horizon</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Oasis</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Apex</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Zenith</span
+        >
+        <span class="hover:text-zinc-300 transition-colors cursor-default"
+          >Pulse</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <section id="services" class="py-32 px-6 bg-[#09090b] relative">
+    <div class="max-w-7xl mx-auto">
+      <SectionHeader
+        eyebrow="Capabilities"
+        title="Everything you need."
+        description="When off-the-shelf tools limit your growth, we build custom software that adapts to your specific operational needs."
+      >
+        <a
+          href="/services"
+          slot="action"
+          class="text-zinc-400 hover:text-white text-sm font-medium flex items-center gap-2 group transition-colors"
+        >
+          Explore Services
+          <ArrowRight
+            size={14}
+            className="group-hover:translate-x-1 transition-transform"
+          />
+        </a>
+      </SectionHeader>
+      <BentoServices />
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section
+    id="products"
+    class="py-32 px-6 bg-[#09090b] border-t border-white/5"
+  >
+    <div class="max-w-7xl mx-auto">
+      <SectionHeader
+        eyebrow="Our Ecosystem"
+        title="Products."
+        description="Proprietary tools built by TipThing to solve specific industry challenges."
+      >
+        <a
+          href="/products"
+          slot="action"
+          class="text-zinc-400 hover:text-white text-sm font-medium flex items-center gap-2 group transition-colors"
+        >
+          View All Products
+          <ArrowRight
+            size={14}
+            className="group-hover:translate-x-1 transition-transform"
+          />
+        </a>
+      </SectionHeader>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Logable - Large Featured -->
+        <SpotlightCard
+          client:load
+          className="md:col-span-2 md:row-span-2 bg-zinc-900/30"
+        >
+          <div class="p-8 h-full flex flex-col">
+            <div class="mb-6">
+              <div
+                class="w-8 h-8 rounded bg-zinc-800 border border-white/10 text-zinc-400 flex items-center justify-center mb-3 font-bold text-sm"
+              >
+                L
+              </div>
+              <h3 class="text-2xl font-bold text-white">Logable</h3>
+              <p class="text-zinc-500 mt-2 text-sm max-w-md">
+                Dashboard builder for IoT.
+              </p>
+            </div>
+            <div
+              class="flex-1 rounded-lg border border-white/5 bg-[#09090b] overflow-hidden relative shadow-2xl"
+            >
+              <LogableUI client:load />
+            </div>
+          </div>
+        </SpotlightCard>
+
+        <!-- AssetDock - Small -->
+        <SpotlightCard client:load className="bg-zinc-900/30">
+          <div class="p-6 h-full flex flex-col">
+            <h3 class="text-lg font-bold text-white mb-1">AssetDock</h3>
+            <p class="text-zinc-500 text-xs mb-6">
+              Asset lifecycle management.
+            </p>
+            <div
+              class="flex-1 rounded border border-white/5 bg-[#09090b] overflow-hidden relative"
+            >
+              <AssetDockSimpleUI client:load />
+            </div>
+          </div>
+        </SpotlightCard>
+
+        <!-- Fitsy - Small -->
+        <SpotlightCard client:load className="bg-zinc-900/30">
+          <div class="p-6 h-full flex flex-col">
+            <h3 class="text-lg font-bold text-white mb-1">Fitsy</h3>
+            <p class="text-zinc-500 text-xs mb-6">
+              Client management for trainers.
+            </p>
+            <div
+              class="flex-1 rounded border border-white/5 bg-[#09090b] overflow-hidden relative"
+            >
+              <FitsySimpleUI client:load />
+            </div>
+          </div>
+        </SpotlightCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology Section -->
+  <section class="py-32 px-6 bg-[#09090b] border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto">
+      <Methodology />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-32 px-6 bg-[#09090b] border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-3xl font-bold text-white mb-12 text-center">
+        Common Questions
+      </h3>
+      <div class="flex flex-col gap-4">
+        <div class="border-b border-white/5">
+          <button
+            class="faq-button w-full py-6 flex items-center justify-between text-left hover:text-white transition-colors text-zinc-400"
+          >
+            <span class="text-sm font-medium"
+              >Do you work with non-technical founders?</span
+            >
+            <svg
+              class="w-4 h-4 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            class="faq-content overflow-hidden transition-all duration-300"
+            style="max-height: 0;"
+          >
+            <p class="text-zinc-500 pb-6 leading-relaxed pr-8 text-sm">
+              Absolutely. We specialize in translating business requirements
+              into technical specifications. We act as your fractional CTO until
+              you're ready to hire one.
+            </p>
+          </div>
+        </div>
+
+        <div class="border-b border-white/5">
+          <button
+            class="faq-button w-full py-6 flex items-center justify-between text-left hover:text-white transition-colors text-zinc-400"
+          >
+            <span class="text-sm font-medium"
+              >What is your typical project timeline?</span
+            >
+            <svg
+              class="w-4 h-4 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            class="faq-content overflow-hidden transition-all duration-300"
+            style="max-height: 0;"
+          >
+            <p class="text-zinc-500 pb-6 leading-relaxed pr-8 text-sm">
+              Most MVPs take 8-12 weeks. Complex enterprise migrations can take
+              6-12 months. We work in 2-week sprints so you see value
+              immediately.
+            </p>
+          </div>
+        </div>
+
+        <div class="border-b border-white/5">
+          <button
+            class="faq-button w-full py-6 flex items-center justify-between text-left hover:text-white transition-colors text-zinc-400"
+          >
+            <span class="text-sm font-medium"
+              >Do you outsource development?</span
+            >
+            <svg
+              class="w-4 h-4 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            class="faq-content overflow-hidden transition-all duration-300"
+            style="max-height: 0;"
+          >
+            <p class="text-zinc-500 pb-6 leading-relaxed pr-8 text-sm">
+              No. All development is done in-house by our full-time team. We do
+              not white-label or farm out code to the lowest bidder.
+            </p>
+          </div>
+        </div>
+
+        <div class="border-b border-white/5">
+          <button
+            class="faq-button w-full py-6 flex items-center justify-between text-left hover:text-white transition-colors text-zinc-400"
+          >
+            <span class="text-sm font-medium">What happens after launch?</span>
+            <svg
+              class="w-4 h-4 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            class="faq-content overflow-hidden transition-all duration-300"
+            style="max-height: 0;"
+          >
+            <p class="text-zinc-500 pb-6 leading-relaxed pr-8 text-sm">
+              We offer ongoing maintenance packages, or we can train your
+              internal team to take over. You own the code completely.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-32 px-6 bg-gradient-to-b from-[#09090b] to-zinc-950">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+        Ready to build something remarkable?
+      </h2>
+      <p class="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+        Let's discuss your technical challenges. We typically respond within 24
+        hours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/contact" class="w-full sm:w-auto">
+          <StandardButton client:load className="w-full sm:w-auto px-10">
+            Start a Project
+          </StandardButton>
+        </a>
+        <a href="/company" class="w-full sm:w-auto">
+          <StandardButton
+            client:load
+            variant="outline"
+            className="w-full sm:w-auto px-10"
+          >
+            Learn About Us
+          </StandardButton>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Marquee Animation */
+  .marquee-content {
+    animation: marquee 40s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* FAQ Interactivity */
+  .faq-button.active svg {
+    transform: rotate(180deg);
+  }
+
+  .faq-button.active ~ .faq-content {
+    max-height: 500px !important;
+  }
+</style>
+
+<script>
+  // FAQ Toggle
+  document.querySelectorAll(".faq-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      const isActive = button.classList.contains("active");
+
+      // Close all FAQs
+      document.querySelectorAll(".faq-button").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      // Toggle current FAQ
+      if (!isActive) {
+        button.classList.add("active");
+      }
+    });
+  });
+</script>
