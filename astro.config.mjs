@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -15,6 +16,9 @@ export default defineConfig({
         '**/components/interactive/**',
         '**/components/layout/NavBar.tsx'
       ],
+    }),
+    sitemap({
+      filter: (page) => !page.includes('/404'),
     }),
   ],
 
@@ -52,7 +56,7 @@ export default defineConfig({
       },
 
       // Chunk size warnings
-      chunkSizeWarningLimit: 150, // KB
+      chunkSizeWarningLimit: 200, // KB — vendor chunks (react-dom, framer-motion) exceed 150KB uncompressed
     },
 
     // Optimization during dev
@@ -73,23 +77,23 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  // Prefetch configuration for better navigation
+  // Prefetch configuration — viewport strategy preloads links as they enter view
   prefetch: {
     prefetchAll: false,
-    defaultStrategy: 'hover',
+    defaultStrategy: 'viewport',
   },
 
-  // Image optimization (when images are added)
+  // Image optimization
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {
-        limitInputPixels: 268402689, // Prevent DoS attacks
+        limitInputPixels: 268402689,
       },
     },
     remotePatterns: [{ protocol: 'https' }],
-    formats: ['avif', 'webp'], // Modern formats (AVIF is 20-30% smaller than WebP)
-    quality: 80, // Balance quality/size
+    formats: ['avif', 'webp'],
+    quality: 80,
   },
 
   // Compression

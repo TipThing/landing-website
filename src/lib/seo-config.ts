@@ -1,58 +1,59 @@
 /**
- * Default SEO Configuration for Tipthing
+ * Default SEO Configuration for TipThing
  * Centralized SEO values for consistent branding and metadata
  */
 
 export const seoConfig = {
   // Site Information
-  siteName: 'Tipthing',
-  siteUrl: 'https://tipthing.com', // Update with actual domain
+  siteName: 'TipThing',
+  siteUrl: 'https://tipthing.com',
 
   // Default Meta Tags
-  defaultTitle: 'Tipthing - Smart Tipping Made Simple',
+  defaultTitle: 'TipThing - Software, Solved.',
   defaultDescription:
-    'Modern tipping solution that makes it easy for customers to show appreciation and for businesses to manage gratuities efficiently. Quick, contactless, and secure.',
+    'We engineer bespoke cloud architectures and deploy powerful pre-built tools. No fluff. Just precision software that moves your business forward.',
 
   defaultKeywords: [
-    'tipping',
-    'gratuity',
-    'digital tipping',
-    'QR code tipping',
-    'contactless payment',
-    'tip management',
-    'hospitality payment',
-    'restaurant tipping',
-    'service gratuity',
+    'custom software development',
+    'cloud architecture',
+    'bespoke engineering',
+    'web application development',
+    'mobile app development',
+    'IoT solutions',
+    'digital transformation',
+    'software consultancy',
+    'Johannesburg software company',
+    'enterprise software',
   ],
 
   // Brand Information
-  author: 'Tipthing',
+  author: 'TipThing',
   language: 'en',
-  locale: 'en_US',
+  locale: 'en_ZA',
 
   // Social Media
   twitter: {
-    handle: '@tipthing', // Update with actual Twitter handle
+    handle: '@tipthing',
     card: 'summary_large_image' as const,
   },
 
   // Open Graph Defaults
   openGraph: {
     type: 'website' as const,
-    locale: 'en_US',
-    siteName: 'Tipthing',
+    locale: 'en_ZA',
+    siteName: 'TipThing',
   },
 
   // Default Images
   defaultImage: {
-    url: '/og-image.png', // Create this image: 1200x630px
+    url: '/og-image.png',
     width: 1200,
     height: 630,
-    alt: 'Tipthing - Smart Tipping Made Simple',
+    alt: 'TipThing - Software, Solved.',
     type: 'image/png',
   },
 
-  logo: '/logo.png', // Update with actual logo path
+  logo: '/favicon.svg',
 
   // Robots
   robots: {
@@ -62,38 +63,31 @@ export const seoConfig = {
 
   // Structured Data
   organization: {
-    name: 'Tipthing',
-    legalName: 'Tipthing Inc.', // Update with actual legal name
+    name: 'TipThing',
+    legalName: 'TipThing (Pty) Ltd',
     description:
-      'A modern digital tipping platform that revolutionizes how customers show appreciation and how businesses manage gratuities.',
-    foundingDate: '2024', // Update with actual founding date
+      'We engineer bespoke cloud architectures and deploy powerful pre-built tools. Precision software that moves your business forward.',
+    foundingDate: '2024',
 
-    // Contact Information (update with actual details)
+    // Contact Information
     email: 'hello@tipthing.com',
-    phone: '+1-XXX-XXX-XXXX',
 
-    // Address (update when available)
+    // Address
     address: {
-      streetAddress: '',
-      city: '',
-      region: '',
+      streetAddress: '123 Tech Blvd',
+      city: 'Johannesburg',
+      region: 'Gauteng',
       postalCode: '',
-      country: 'US',
+      country: 'ZA',
     },
 
-    // Social Media Links (update with actual profiles)
-    socialLinks: [
-      // 'https://twitter.com/tipthing',
-      // 'https://linkedin.com/company/tipthing',
-      // 'https://facebook.com/tipthing',
-      // 'https://instagram.com/tipthing',
-    ],
+    // Social Media Links
+    socialLinks: [] as string[],
   },
 };
 
 /**
  * Page-specific SEO configurations
- * Use these as templates for different page types
  */
 export const pageTemplates = {
   homepage: {
@@ -102,39 +96,56 @@ export const pageTemplates = {
     keywords: seoConfig.defaultKeywords,
   },
 
-  about: {
-    title: 'About Tipthing - Our Mission',
+  services: {
+    title: 'Services - TipThing',
     description:
-      'Learn about Tipthing\'s mission to modernize tipping and make appreciation simple, secure, and transparent for everyone.',
-    keywords: ['about tipthing', 'our mission', 'company info', 'tipping innovation'],
+      'We replace intuition with engineering. Bespoke software, cloud architecture, mobile ecosystems, IoT connectivity, and digital transformation.',
+    keywords: [
+      'custom software development',
+      'cloud architecture',
+      'mobile app development',
+      'IoT solutions',
+      'digital transformation',
+      'bespoke engineering',
+    ],
   },
 
-  pricing: {
-    title: 'Pricing - Tipthing',
+  products: {
+    title: 'Products - TipThing',
     description:
-      'Simple, transparent pricing for Tipthing. Choose the plan that works best for your business with no hidden fees.',
-    keywords: ['pricing', 'plans', 'cost', 'business pricing', 'tipping fees'],
+      'Proprietary tools built by TipThing to solve specific industry challenges. Logable, AssetDock, Fitsy, and more.',
+    keywords: [
+      'Logable',
+      'AssetDock',
+      'Fitsy',
+      'IoT dashboard',
+      'asset management',
+      'SaaS products',
+    ],
+  },
+
+  company: {
+    title: 'Company - TipThing',
+    description:
+      'Learn about TipThing — a software engineering company building precision tools and bespoke solutions from Johannesburg, South Africa.',
+    keywords: [
+      'about TipThing',
+      'software company',
+      'Johannesburg tech',
+      'engineering team',
+    ],
   },
 
   contact: {
-    title: 'Contact Us - Tipthing',
+    title: 'Contact - TipThing',
     description:
-      'Get in touch with Tipthing. We\'re here to help answer your questions and support your tipping needs.',
-    keywords: ['contact', 'support', 'help', 'customer service'],
-  },
-
-  features: {
-    title: 'Features - Tipthing',
-    description:
-      'Explore Tipthing\'s powerful features: QR code tipping, instant payments, analytics, and more. Everything you need to manage tips efficiently.',
-    keywords: ['features', 'capabilities', 'QR codes', 'analytics', 'payment processing'],
-  },
-
-  blog: {
-    title: 'Blog - Tipthing',
-    description:
-      'Tips, insights, and news about digital tipping, hospitality, and the future of gratuities.',
-    keywords: ['blog', 'articles', 'tipping insights', 'hospitality news'],
+      'Tell us about your technical challenges. We typically respond within 24 hours with a preliminary assessment.',
+    keywords: [
+      'contact',
+      'start a project',
+      'software consultation',
+      'get in touch',
+    ],
   },
 };
 
@@ -157,7 +168,6 @@ export function generateTitle(pageTitle?: string): string {
 
 /**
  * Image optimization settings for Open Graph images
- * Following Core Web Vitals best practices
  */
 export const imageConfig = {
   openGraph: {

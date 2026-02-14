@@ -12,10 +12,30 @@ import {
   FitsySimpleUI,
 } from "../components/interactive";
 import { ArrowRight } from "lucide-react";
+import { createFAQSchema } from "../lib/seo-helpers";
 
 const pageTitle = "TipThing - Software, Solved.";
 const pageDescription =
   "We engineer bespoke cloud architectures and deploy powerful pre-built tools. No fluff. Just precision software that moves your business forward.";
+
+const faqData = createFAQSchema([
+  {
+    question: "Do you work with non-technical founders?",
+    answer: "Absolutely. We specialize in translating business requirements into technical specifications. We act as your fractional CTO until you're ready to hire one.",
+  },
+  {
+    question: "What is your typical project timeline?",
+    answer: "Most MVPs take 8-12 weeks. Complex enterprise migrations can take 6-12 months. We work in 2-week sprints so you see value immediately.",
+  },
+  {
+    question: "Do you outsource development?",
+    answer: "No. All development is done in-house by our full-time team. We do not white-label or farm out code to the lowest bidder.",
+  },
+  {
+    question: "What happens after launch?",
+    answer: "We offer ongoing maintenance packages, or we can train your internal team to take over. You own the code completely.",
+  },
+]);
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription} currentPath="/">
@@ -382,6 +402,8 @@ const pageDescription =
       </div>
     </div>
   </section>
+  <!-- FAQ Structured Data for rich search results -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqData)} />
 </BaseLayout>
 
 <style>
@@ -410,20 +432,26 @@ const pageDescription =
 </style>
 
 <script>
-  // FAQ Toggle
-  document.querySelectorAll(".faq-button").forEach((button) => {
-    button.addEventListener("click", () => {
-      const isActive = button.classList.contains("active");
+  // FAQ Toggle — re-runs after View Transitions via astro:page-load
+  function initFAQ() {
+    document.querySelectorAll(".faq-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const isActive = button.classList.contains("active");
 
-      // Close all FAQs
-      document.querySelectorAll(".faq-button").forEach((btn) => {
-        btn.classList.remove("active");
+        // Close all FAQs
+        document.querySelectorAll(".faq-button").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // Toggle current FAQ
+        if (!isActive) {
+          button.classList.add("active");
+        }
       });
-
-      // Toggle current FAQ
-      if (!isActive) {
-        button.classList.add("active");
-      }
     });
-  });
+  }
+
+  // Run on initial load and after View Transitions
+  initFAQ();
+  document.addEventListener("astro:after-swap", initFAQ);
 </script>

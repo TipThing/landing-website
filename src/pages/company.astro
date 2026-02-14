@@ -4,8 +4,13 @@ import PageHero from '../components/sections/PageHero.astro';
 import SpotlightCard from '../components/ui/SpotlightCard';
 import StandardButton from '../components/ui/StandardButton.astro';
 import { LineChart, Users } from 'lucide-react';
+import { createBreadcrumbSchema } from '../lib/seo-helpers';
 
 const pageTitle = 'Company - TipThing';
+const breadcrumbs = createBreadcrumbSchema([
+  { name: 'Home', url: 'https://tipthing.com/' },
+  { name: 'Company' },
+]);
 const pageDescription = 'We are a collective of engineers, designers, and strategists who believe in the power of well-crafted software.';
 
 const values = [
@@ -97,6 +102,7 @@ const values = [
       </div>
     </section>
   </div>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
 </BaseLayout>
 
 <style>

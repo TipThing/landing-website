@@ -71,15 +71,15 @@ export interface Props {
 }
 
 const {
-  title = 'Tipthing - Smart Tipping Made Simple',
-  description = 'Modern tipping solution that makes it easy for customers to show appreciation and for businesses to manage gratuities efficiently.',
-  keywords = ['tipping', 'gratuity', 'payment', 'QR code', 'digital tipping', 'contactless payment'],
+  title = 'TipThing - Software, Solved.',
+  description = 'We engineer bespoke cloud architectures and deploy powerful pre-built tools. No fluff. Just precision software that moves your business forward.',
+  keywords = ['custom software development', 'cloud architecture', 'bespoke engineering', 'software consultancy'],
   canonical,
   openGraph,
   twitter,
   robots = 'index, follow',
   googlebot,
-  author = 'Tipthing',
+  author = 'TipThing',
   language = 'en',
   jsonLd,
   favicon = '/favicon.svg',
@@ -173,13 +173,13 @@ const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href={favicon} />
+
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />
 {appleTouchIcon && <link rel="apple-touch-icon" href={appleTouchIcon} />}
 
-<!-- Viewport for Core Web Vitals optimization -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-
 <!-- Theme Color for mobile browsers -->
-<meta name="theme-color" content="#ffffff" />
+<meta name="theme-color" content="#09090b" />
 
 <!-- JSON-LD Structured Data -->
 {jsonLdArray.map((data) => (

@@ -12,8 +12,13 @@ import {
 } from '../components/interactive/AdvancedVisuals';
 import { WebAppVisual } from '../components/interactive';
 import { Code, Cloud, Smartphone, Layers, Wifi, RefreshCw } from 'lucide-react';
+import { createBreadcrumbSchema } from '../lib/seo-helpers';
 
 const pageTitle = 'Services - TipThing';
+const breadcrumbs = createBreadcrumbSchema([
+  { name: 'Home', url: 'https://tipthing.com/' },
+  { name: 'Services' },
+]);
 const pageDescription = 'We replace intuition with engineering. Our bespoke solutions are built on robust, scalable architectures.';
 
 const services = [
@@ -127,6 +132,7 @@ const services = [
       </div>
     </section>
   </div>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
 </BaseLayout>
 
 <style>

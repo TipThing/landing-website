@@ -4,9 +4,14 @@ import PageHero from '../components/sections/PageHero.astro';
 import SpotlightCard from '../components/ui/SpotlightCard';
 import StandardButton from '../components/ui/StandardButton.astro';
 import { LogableUI, AssetDockManagerUI, FitsyBuilderUI } from '../components/interactive';
+import { createBreadcrumbSchema } from '../lib/seo-helpers';
 
 const pageTitle = 'Products - TipThing';
 const pageDescription = 'We build tools to solve our own problems. Then we polish them for the world. Available for license or subscription.';
+const breadcrumbs = createBreadcrumbSchema([
+  { name: 'Home', url: 'https://tipthing.com/' },
+  { name: 'Products' },
+]);
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription} currentPath="/products">
@@ -120,6 +125,7 @@ const pageDescription = 'We build tools to solve our own problems. Then we polis
       </div>
     </section>
   </div>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
 </BaseLayout>
 
 <style>

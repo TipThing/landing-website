@@ -14,16 +14,17 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
-    "@tailwindcss/vite": "^4.1.17",
-    "@types/react": "^19.2.6",
+    "@astrojs/sitemap": "^3.7.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.0",
-    "framer-motion": "^12.23.24",
+    "astro": "^5.17.2",
+    "framer-motion": "^12.34.0",
     "lucide-react": "^0.554.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.18"
   },
   "packageManager": "pnpm@10.21.0+sha512.da3337267e400fdd3d479a6c68079ac6db01d8ca4f67572083e722775a796788a7a9956613749e000fac20d424b594f7a791a5f4e2e13581c5ef947f26968a40",
   "devDependencies": {

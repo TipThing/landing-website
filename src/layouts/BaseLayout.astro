@@ -32,11 +32,14 @@ const {
   noindex={noindex}
   pageType={pageType}
 >
-  <!-- Navigation - client:load for interactivity -->
-  <NavBar client:load currentPath={currentPath} />
+  <!-- Skip to main content for accessibility (WCAG 2.1 Level A) -->
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+
+  <!-- Navigation - client:idle defers React hydration until browser is idle -->
+  <NavBar client:idle currentPath={currentPath} transition:persist />
 
   <!-- Main Content -->
-  <main>
+  <main id="main-content" transition:animate="fade">
     <slot />
   </main>
 

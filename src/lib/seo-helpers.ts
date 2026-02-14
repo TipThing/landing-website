@@ -465,23 +465,27 @@ export function createFAQSchema(
  */
 export function getTipthingDefaultSchema(baseUrl: string) {
   const organization = createOrganizationSchema({
-    name: 'Tipthing',
+    name: 'TipThing',
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
+    logo: `${baseUrl}/favicon.svg`,
     description:
-      'Modern tipping solution that makes it easy for customers to show appreciation and for businesses to manage gratuities efficiently.',
-    socialLinks: [
-      // Add actual social media links when available
-    ],
+      'We engineer bespoke cloud architectures and deploy powerful pre-built tools. Precision software that moves your business forward.',
+    contactEmail: 'hello@tipthing.com',
+    address: {
+      streetAddress: '123 Tech Blvd',
+      city: 'Johannesburg',
+      region: 'Gauteng',
+      country: 'ZA',
+    },
   });
 
   const website = createWebSiteSchema({
-    name: 'Tipthing',
+    name: 'TipThing',
     url: baseUrl,
     description:
-      'Smart tipping made simple with QR codes and digital payment solutions.',
-    publisher: 'Tipthing',
-    publisherLogo: `${baseUrl}/logo.png`,
+      'Bespoke cloud architectures and powerful pre-built tools. Precision software engineering from Johannesburg.',
+    publisher: 'TipThing',
+    publisherLogo: `${baseUrl}/favicon.svg`,
   });
 
   return [organization, website];

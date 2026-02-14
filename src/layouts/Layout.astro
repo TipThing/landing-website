@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 import SEO from '../components/SEO.astro';
 import { seoConfig } from '../lib/seo-config';
 import { getTipthingDefaultSchema } from '../lib/seo-helpers';
@@ -23,7 +24,7 @@ const {
 } = Astro.props;
 
 // Get default structured data
-const baseUrl = Astro.site?.toString() || seoConfig.siteUrl;
+const baseUrl = (Astro.site?.toString() || seoConfig.siteUrl).replace(/\/$/, '');
 const defaultJsonLd = getTipthingDefaultSchema(baseUrl);
 
 // Prepare Open Graph image
@@ -48,12 +49,10 @@ const ogImage = image
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="color-scheme" content="dark" />
 
-		<!-- Performance: DNS Prefetch for external resources -->
-		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-
-		<!-- Performance: Preconnect for critical origins -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+		<!-- View Transitions for seamless page navigation -->
+		<ViewTransitions />
 
 		<!-- Font optimization: Use system fonts for instant render -->
 		<style>
