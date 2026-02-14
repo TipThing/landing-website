@@ -130,8 +130,8 @@ const pageDescription = 'Tell us about your technical challenges. We typically r
       </div>
     </div>
 
-    <!-- World Map (aligned with content) -->
-    <div class="max-w-7xl mx-auto w-full">
+    <!-- World Map (aligned with content, isolated from page content) -->
+    <div class="max-w-7xl mx-auto w-full" style="isolation: isolate;">
       <div class="world-map-fade">
         <WorldMap
           client:visible
@@ -184,10 +184,14 @@ const pageDescription = 'Tell us about your technical challenges. We typically r
     animation-duration: 0.5s;
   }
 
-  /* World map radial vignette fade */
+  /* World map edge fade - horizontal sides and bottom only, no top fade */
   .world-map-fade {
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 70%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent),
+                        linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+    -webkit-mask-composite: destination-in;
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent),
+                linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+    mask-composite: intersect;
   }
 
   /* Custom select arrow */
