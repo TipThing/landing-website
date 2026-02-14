@@ -163,17 +163,25 @@ export const SignalPulseVisual = () => {
           transition={{ duration: prefersReducedMotion ? 0 : 3, repeat: Infinity, delay: i * 1, ease: "easeOut" }}
         />
       ))}
-      {[0, 72, 144, 216, 288].map((deg, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-full h-full flex items-center justify-center pointer-events-none z-10"
-          animate={prefersReducedMotion ? {} : { rotate: 360 }}
-          transition={{ duration: prefersReducedMotion ? 0 : 60, repeat: Infinity, ease: "linear", delay: i * -5 }}
+      {[0, 60, 120, 180, 240, 300].map((deg) => (
+        <div
+          key={deg}
+          className="absolute pointer-events-none z-10"
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: `translate(-50%, -50%) rotate(${deg}deg) translateY(-70px)`,
+          }}
         >
-          <div className="h-[140px] flex flex-col justify-between items-center" style={{ transform: `rotate(${deg}deg)` }}>
-            <div className="w-2 h-2 bg-zinc-800 rounded-full border border-white/10" />
-          </div>
-        </motion.div>
+          <motion.div
+            className="w-3 h-3 bg-zinc-700 rounded-full border border-white/15 shadow-[0_0_6px_rgba(16,185,129,0.15)]"
+            animate={prefersReducedMotion ? {} : {
+              opacity: [0.5, 1, 0.5],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ duration: prefersReducedMotion ? 0 : 2, repeat: Infinity, delay: deg / 360 * 2 }}
+          />
+        </div>
       ))}
     </div>
   );

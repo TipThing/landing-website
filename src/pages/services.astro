@@ -4,54 +4,54 @@ import PageHero from '../components/sections/PageHero.astro';
 import SpotlightCard from '../components/ui/SpotlightCard';
 import StandardButton from '../components/ui/StandardButton.astro';
 import {
+  CloudTopologyVisual,
   UniversalPlatformVisual,
-  FullStackVisual,
-  DataArchitectureVisual,
-  DevOpsPipelineVisual,
-  ModernizationVisual
+  TechStackVisual,
+  SignalPulseVisual,
+  MigrationVisual
 } from '../components/interactive/AdvancedVisuals';
 import { WebAppVisual } from '../components/interactive';
-import { Monitor, Layers, Layout, Server, RefreshCw, TerminalSquare } from 'lucide-react';
+import { Code, Cloud, Smartphone, Layers, Wifi, RefreshCw } from 'lucide-react';
 
 const pageTitle = 'Services - TipThing';
 const pageDescription = 'We replace intuition with engineering. Our bespoke solutions are built on robust, scalable architectures.';
 
 const services = [
   {
-    icon: Monitor,
-    title: "Desktop & Mobile Apps",
-    desc: "Native-performance applications using Electron and React Native. Seamless experience across all devices (iOS, Android, MacOS, Windows).",
-    visual: UniversalPlatformVisual
+    icon: Code,
+    title: "Bespoke Engineering",
+    desc: "We don't use templates. We architect custom software platforms tailored to your specific operational constraints and business goals. From complex data-heavy web applications to internal tools, every line of code is purpose-built.",
+    visual: "WebAppVisual"
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Architecture",
+    desc: "Scalable AWS & Azure infrastructure designed for reliability. We build resilient APIs, design optimised database schemas, and architect systems that handle spike loads without downtime.",
+    visual: "CloudTopologyVisual"
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Ecosystems",
+    desc: "Native-performance cross-platform applications for iOS and Android. Seamless experiences built with shared business logic and platform-specific polish where it matters.",
+    visual: "UniversalPlatformVisual"
   },
   {
     icon: Layers,
-    title: "Full Stack Cloud Solutions",
-    desc: "End-to-end architecture from database design to frontend implementation. Scalable, secure, and built for growth.",
-    visual: FullStackVisual
+    title: "Modern Stack",
+    desc: "We build with Next.js, Rust, and Go — choosing the right tool for each layer of your system. Type-safe frontends, blazing backend services, and everything connected through well-defined contracts.",
+    visual: "TechStackVisual"
   },
   {
-    icon: Layout,
-    title: "Web Application Development",
-    desc: "Complex, data-heavy web applications using React, Next.js, and TypeScript. Our focus is on performance and type safety.",
-    visual: WebAppVisual
-  },
-  {
-    icon: Server,
-    title: "Cloud Infrastructure",
-    desc: "Designing scalable schemas with PostgreSQL and Redis. We build resilient APIs that can handle spike loads without downtime.",
-    visual: DataArchitectureVisual
+    icon: Wifi,
+    title: "IoT Connectivity",
+    desc: "Real-time device mesh networks and telemetry pipelines. We connect physical devices to cloud dashboards with low-latency ingestion, protocol translation, and live monitoring at scale.",
+    visual: "SignalPulseVisual"
   },
   {
     icon: RefreshCw,
-    title: "DevOps & CI/CD",
-    desc: "Automated build pipelines and deployment strategies. We ensure your code ships to production safely and frequently.",
-    visual: DevOpsPipelineVisual
-  },
-  {
-    icon: TerminalSquare,
-    title: "Legacy Modernization",
-    desc: "Strangling monoliths into microservices. We migrate legacy PHP/.NET systems to modern stacks with zero downtime.",
-    visual: ModernizationVisual
+    title: "Digital Transformation",
+    desc: "Strangling monoliths into microservices. We migrate legacy PHP/.NET systems to modern stacks with zero downtime, preserving business continuity while unlocking new capabilities.",
+    visual: "MigrationVisual"
   }
 ];
 ---
@@ -82,16 +82,18 @@ const services = [
               </div>
               <SpotlightCard
                 client:visible
-                className={`aspect-square md:aspect-[4/3] order-1 ${isEven ? 'md:order-2' : 'md:order-1'}`}
+                className={`aspect-[4/3] order-1 ${isEven ? 'md:order-2' : 'md:order-1'}`}
               >
                 <div class="h-full w-full p-1 bg-zinc-900/50">
                   <div class="h-full w-full rounded bg-zinc-950 border border-white/5 overflow-hidden relative">
-                    {service.title === "Desktop & Mobile Apps" && <UniversalPlatformVisual client:visible />}
-                    {service.title === "Full Stack Cloud Solutions" && <FullStackVisual client:visible />}
-                    {service.title === "Web Application Development" && <WebAppVisual client:visible />}
-                    {service.title === "Cloud Infrastructure" && <DataArchitectureVisual client:visible />}
-                    {service.title === "DevOps & CI/CD" && <DevOpsPipelineVisual client:visible />}
-                    {service.title === "Legacy Modernization" && <ModernizationVisual client:visible />}
+                    <div class="absolute inset-0 flex items-center justify-center service-visual-scale">
+                      {service.visual === "WebAppVisual" && <WebAppVisual client:visible />}
+                      {service.visual === "CloudTopologyVisual" && <CloudTopologyVisual client:visible />}
+                      {service.visual === "UniversalPlatformVisual" && <UniversalPlatformVisual client:visible />}
+                      {service.visual === "TechStackVisual" && <TechStackVisual client:visible />}
+                      {service.visual === "SignalPulseVisual" && <SignalPulseVisual client:visible />}
+                      {service.visual === "MigrationVisual" && <MigrationVisual client:visible />}
+                    </div>
                   </div>
                 </div>
               </SpotlightCard>
@@ -112,7 +114,6 @@ const services = [
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a href="/contact" class="w-full sm:w-auto">
-            {/* Bottom CTA: client:visible - Far below fold, load when scrolled into view */}
             <StandardButton class="w-full sm:w-auto px-10">
               Start a Project
             </StandardButton>
@@ -150,5 +151,13 @@ const services = [
 
   .duration-500 {
     animation-duration: 0.5s;
+  }
+
+  /* Scale service visuals on mobile to prevent overflow/clipping */
+  @media (max-width: 767px) {
+    .service-visual-scale {
+      transform: scale(0.85);
+      transform-origin: center center;
+    }
   }
 </style>

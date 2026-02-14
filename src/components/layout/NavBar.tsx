@@ -141,16 +141,21 @@ export default function NavBar({ currentPath = '/' }: NavBarProps) {
       {/* Mobile Menu */}
       <motion.div
         id="mobile-menu"
-        initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -20 }}
+        initial={false}
         animate={prefersReducedMotion ? {
           opacity: mobileMenuOpen ? 1 : 0,
+          visibility: mobileMenuOpen ? 'visible' as const : undefined,
+          transitionEnd: mobileMenuOpen ? {} : { visibility: 'hidden' as const },
         } : {
           opacity: mobileMenuOpen ? 1 : 0,
           y: mobileMenuOpen ? 0 : -20,
+          visibility: mobileMenuOpen ? 'visible' as const : undefined,
+          transitionEnd: mobileMenuOpen ? {} : { visibility: 'hidden' as const },
         }}
-        transition={{ duration: prefersReducedMotion ? 0.1 : 0.2 }}
+        transition={{ duration: prefersReducedMotion ? 0.1 : mobileMenuOpen ? 0.2 : 0.15 }}
+        style={{ visibility: 'hidden' }}
         className={cn(
-          'md:hidden fixed inset-0 z-40 bg-[#09090b]/95 backdrop-blur-lg transition-all',
+          'md:hidden fixed inset-0 z-40 bg-[#09090b]/95 backdrop-blur-lg',
           mobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'
         )}
         role="dialog"
@@ -177,7 +182,7 @@ export default function NavBar({ currentPath = '/' }: NavBarProps) {
             <a
               href="/contact"
               onClick={closeMobileMenu}
-              className="w-full py-4 px-6 bg-white/10 border border-white/5 text-zinc-100 rounded-lg text-base font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-white/20"
+              className="w-full py-4 px-6 bg-white/10 border border-white/5 text-zinc-100 rounded-lg text-base font-medium hover:bg-white/20 transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-white/20"
             >
               Start Project <ArrowRight size={16} aria-hidden="true" />
             </a>

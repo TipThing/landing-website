@@ -1,17 +1,11 @@
 ---
-/**
- * 404 Error Page - Page Not Found
- *
- * SEO Strategy:
- * - noindex to prevent indexing of error pages
- * - Clear navigation to help users find their way
- * - Friendly, helpful messaging
- */
-
 import BaseLayout from '../layouts/BaseLayout.astro';
+import StandardButton from '../components/ui/StandardButton.astro';
+import NotFoundVisual from '../components/interactive/NotFoundVisual';
+import { ArrowLeft } from 'lucide-react';
 
 const pageTitle = '404 - Page Not Found | Tipthing';
-const pageDescription = 'The page you are looking for could not be found. Return to the homepage or browse our site.';
+const pageDescription = 'The page you are looking for could not be found.';
 ---
 
 <BaseLayout
@@ -21,151 +15,97 @@ const pageDescription = 'The page you are looking for could not be found. Return
   currentPath="/404"
 >
   <Fragment slot="head">
-    <!-- Prevent indexing of error pages -->
     <meta name="robots" content="noindex, nofollow" />
   </Fragment>
 
-  <!-- 404 Content -->
-  <section
-    class="relative min-h-screen flex items-center justify-center px-6 py-32"
-    aria-labelledby="error-heading"
-  >
-    <div class="absolute inset-0 bg-gradient-to-b from-zinc-900 via-[#09090b] to-[#09090b]" aria-hidden="true"></div>
+  <div class="min-h-screen flex flex-col items-center justify-center px-6 bg-[#09090b] relative overflow-hidden">
+    <!-- Grid pattern background -->
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_20%,transparent_80%)] pointer-events-none"
+    ></div>
 
-    <div class="relative z-10 max-w-4xl mx-auto text-center">
-      <!-- 404 Number -->
-      <div class="mb-8" aria-hidden="true">
-        <span class="text-[12rem] md:text-[16rem] font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent leading-none">
+    <div class="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center animate-in fade-in duration-700">
+      <!-- Desktop: Interactive particle canvas -->
+      <div class="hidden md:block w-full aspect-[8/3] mb-4" aria-hidden="true">
+        <NotFoundVisual client:load />
+      </div>
+
+      <!-- Mobile: Clean static 404 -->
+      <div class="md:hidden select-none pointer-events-none mb-2" aria-hidden="true">
+        <span class="text-[8rem] font-bold text-zinc-900/80 leading-none tracking-tighter block text-center">
           404
         </span>
       </div>
 
-      <!-- Error Message -->
-      <h1
-        id="error-heading"
-        class="text-4xl md:text-6xl font-bold text-white mb-6"
-      >
-        Page Not Found
-      </h1>
+      <!-- Content -->
+      <div class="text-center">
+        <!-- Eyebrow -->
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <span class="h-px w-8 bg-white/20"></span>
+          <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">Page Not Found</span>
+          <span class="h-px w-8 bg-white/20"></span>
+        </div>
 
-      <p class="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-        Oops! The page you're looking for seems to have wandered off.
-        Let's get you back on track.
-      </p>
+        <!-- Heading -->
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tighter leading-[0.95]">
+          This page doesn't exist.
+        </h1>
 
-      <!-- Navigation Options -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-        <a
-          href="/"
-          class="px-8 py-4 bg-white text-black rounded-lg font-semibold text-lg hover:bg-zinc-200 transition-all transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30 focus:ring-offset-4 focus:ring-offset-zinc-950"
-          aria-label="Go to homepage"
-        >
-          Go Home
-        </a>
-        <a
-          href="/contact"
-          class="px-8 py-4 bg-white/10 text-white rounded-lg font-semibold text-lg border border-white/20 hover:bg-white/20 transition-all focus:outline-none focus:ring-4 focus:ring-white/30 focus:ring-offset-4 focus:ring-offset-zinc-950"
-          aria-label="Contact support"
-        >
-          Contact Support
-        </a>
-      </div>
+        <!-- Description -->
+        <p class="text-base text-zinc-400 max-w-md mx-auto leading-relaxed mb-10">
+          The page you're looking for has been moved, removed, or never existed.
+        </p>
 
-      <!-- Quick Links -->
-      <div class="border-t border-white/10 pt-12">
-        <h2 class="text-sm uppercase tracking-wider text-zinc-500 mb-6">Quick Links</h2>
-        <nav aria-label="Quick navigation links">
-          <div class="flex flex-wrap justify-center gap-6 text-sm">
-            <a
-              href="/"
-              class="text-zinc-400 hover:text-white transition-colors focus:outline-none focus:text-white focus:underline underline-offset-4"
-            >
-              Home
-            </a>
-            <a
-              href="/about"
-              class="text-zinc-400 hover:text-white transition-colors focus:outline-none focus:text-white focus:underline underline-offset-4"
-            >
-              About
-            </a>
-            <a
-              href="/contact"
-              class="text-zinc-400 hover:text-white transition-colors focus:outline-none focus:text-white focus:underline underline-offset-4"
-            >
-              Contact
-            </a>
-          </div>
-        </nav>
-      </div>
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="/" class="w-full sm:w-auto">
+            <StandardButton class="w-full sm:w-auto px-8">
+              <ArrowLeft size={16} />
+              Back to Home
+            </StandardButton>
+          </a>
+          <a href="/contact" class="w-full sm:w-auto">
+            <StandardButton variant="outline" class="w-full sm:w-auto px-8">
+              Contact Us
+            </StandardButton>
+          </a>
+        </div>
 
-      <!-- Helpful Information -->
-      <div class="mt-16 p-6 bg-zinc-900/50 border border-zinc-800 rounded-lg max-w-2xl mx-auto">
-        <h2 class="text-lg font-bold text-white mb-3">Common Issues</h2>
-        <ul class="text-left text-zinc-400 space-y-2 text-sm">
-          <li class="flex items-start gap-2">
-            <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-            </svg>
-            <span>Check the URL for typos or errors</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-            </svg>
-            <span>The page may have been moved or deleted</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-            </svg>
-            <span>Try using the search feature or navigation menu</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Animated decoration -->
-      <div class="mt-16 flex justify-center gap-2" aria-hidden="true">
-        <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
-        <div class="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style="animation-delay: 150ms;"></div>
-        <div class="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
+        <!-- Nav links -->
+        <div class="mt-14 pt-8 border-t border-white/5">
+          <nav class="flex flex-wrap justify-center gap-8 text-sm" aria-label="Quick navigation">
+            <a href="/services" class="text-zinc-600 hover:text-white transition-colors">Services</a>
+            <a href="/products" class="text-zinc-600 hover:text-white transition-colors">Products</a>
+            <a href="/company" class="text-zinc-600 hover:text-white transition-colors">Company</a>
+            <a href="/contact" class="text-zinc-600 hover:text-white transition-colors">Contact</a>
+          </nav>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 </BaseLayout>
 
 <style>
-  /* Smooth transitions */
-  a {
-    transition: all 0.2s ease-in-out;
-  }
-
-  /* Focus states */
-  a:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.5);
-    outline-offset: 4px;
-  }
-
-  /* Staggered bounce animation */
-  @keyframes bounce {
-    0%, 100% {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
       transform: translateY(0);
     }
-    50% {
-      transform: translateY(-10px);
-    }
   }
 
-  .animate-bounce {
-    animation: bounce 1s infinite;
+  .animate-in {
+    animation: fade-in 0.7s ease-out;
   }
 
-  /* Optimize for reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    .animate-bounce {
-      animation: none;
-    }
-    * {
-      transition-duration: 0.01ms !important;
-    }
+  .fade-in {
+    animation-name: fade-in;
+  }
+
+  .duration-700 {
+    animation-duration: 0.7s;
   }
 </style>

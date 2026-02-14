@@ -7,8 +7,7 @@
  * @module interactive
  */
 
-export { WorldMap } from "./WorldMap";
-export type { WorldMapProps } from "./WorldMap";
+export { default as WorldMap } from "./WorldMap";
 
 export { LogableUI } from "./LogableUI";
 export type { LogableUIProps } from "./LogableUI";

@@ -12,9 +12,9 @@ import { Code } from 'lucide-react';
 ---
 
 {/* All BentoServices components: client:visible - Below hero section, load when scrolled into view */}
-<div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[180px]">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[200px] md:auto-rows-[180px]">
     <!-- Large Feature 1: Bespoke Engineering (Span 8, Row 2) -->
-    <SpotlightCard className="md:col-span-8 md:row-span-2 bg-zinc-900/40 p-0 flex flex-col justify-between group overflow-hidden" client:visible>
+    <SpotlightCard className="row-span-2 md:col-span-8 md:row-span-2 bg-zinc-900/40 p-0 flex flex-col justify-between group overflow-hidden" client:visible>
          <div class="absolute inset-0 opacity-50">
             <WebAppVisual client:visible />
         </div>

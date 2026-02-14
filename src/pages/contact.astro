@@ -9,8 +9,8 @@ const pageDescription = 'Tell us about your technical challenges. We typically r
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription} currentPath="/contact">
-  <div class="min-h-screen pt-32 px-6 pb-20 bg-[#09090b] animate-in fade-in duration-500 flex flex-col">
-    <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col lg:flex-row gap-12 lg:gap-24 mb-20">
+  <div class="min-h-screen pt-32 px-6 bg-[#09090b] animate-in fade-in duration-500 flex flex-col">
+    <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col lg:flex-row gap-12 lg:gap-24 mb-12">
       <!-- Left Column: Context & Info -->
       <div class="flex-1 flex flex-col justify-between">
         <div>
@@ -43,14 +43,6 @@ const pageDescription = 'Tell us about your technical challenges. We typically r
                 <div class="text-sm font-bold text-white">Visit HQ</div>
                 <div class="text-zinc-500 text-sm group-hover:text-white transition-colors">123 Tech Blvd, Johannesburg</div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hidden lg:block mt-20">
-          <div class="h-40 w-full border border-white/5 bg-zinc-900/20 rounded-lg overflow-hidden relative">
-            <div class="absolute inset-0 opacity-20">
-              <WorldMap client:visible />
             </div>
           </div>
         </div>
@@ -137,6 +129,34 @@ const pageDescription = 'Tell us about your technical challenges. We typically r
         </div>
       </div>
     </div>
+
+    <!-- World Map (aligned with content) -->
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="world-map-fade">
+        <WorldMap
+          client:visible
+          lineColor="#71717a"
+          dots={[
+            {
+              start: { lat: -25.7479, lng: 28.2293 },
+              end: { lat: 51.5074, lng: -0.1278 },
+            },
+            {
+              start: { lat: -25.7479, lng: 28.2293 },
+              end: { lat: 40.7128, lng: -74.006 },
+            },
+            {
+              start: { lat: -25.7479, lng: 28.2293 },
+              end: { lat: 1.3521, lng: 103.8198 },
+            },
+            {
+              start: { lat: -25.7479, lng: 28.2293 },
+              end: { lat: -33.8688, lng: 151.2093 },
+            },
+          ]}
+        />
+      </div>
+    </div>
   </div>
 </BaseLayout>
 
@@ -162,6 +182,12 @@ const pageDescription = 'Tell us about your technical challenges. We typically r
 
   .duration-500 {
     animation-duration: 0.5s;
+  }
+
+  /* World map radial vignette fade */
+  .world-map-fade {
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 70%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 70%);
   }
 
   /* Custom select arrow */
